@@ -237,7 +237,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &315502671
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -371,9 +371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb47ae836bf788b49af8eb0f9bcf3f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 8
-  jumpNitro: 4
-  jumpCount: 0
+  jumpForce: 6
+  jumpTimeMax: 5
+  isHoldingJump: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

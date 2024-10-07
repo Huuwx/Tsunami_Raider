@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,36 +11,56 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] float jumpForce;
-    [SerializeField] float jumpNitro;
-    [SerializeField] private float jumpCount;
+    [SerializeField] private float jumpTimeMax;
+    private float jumpTimeCounter;
+
+    public bool isHoldingJump = false;
+    private bool isGrounded = true;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        jumpCount = 0;
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Jump();
+        HandleJump();
     }
 
-    public void Jump()
+    public void HandleJump()
     {
+
         if (Input.GetButtonDown("Jump"))
         {
-            if(jumpCount < 1)
+            isHoldingJump = true;
+        }
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isGrounded = false;
+            jumpTimeCounter = jumpTimeMax;
+        }
+
+        if(Input.GetButton("Jump") && isHoldingJump)
+        {
+            if(jumpTimeCounter > 0) 
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpCount++;
+                jumpTimeCounter -= Time.deltaTime;
             }
             else
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpNitro);
+                isHoldingJump = false;
             }
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            isHoldingJump = false;
         }
     }
 
@@ -47,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision != null)
         {
-            jumpCount = 0;
+            isGrounded = true;
             Debug.Log("Cham dat");
         }
     }
