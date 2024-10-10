@@ -24,9 +24,6 @@ public class Parallax : MonoBehaviour
         float realVelocity = playerController.speed / depth;
         Vector2 pos = transform.localPosition;
 
-        Debug.Log("Current X position: " + pos.x);
-        Debug.Log("Real Velocity: " + realVelocity);
-
         pos.x -= realVelocity * Time.deltaTime;
 
         if(pos.x <= -19)
