@@ -21,7 +21,7 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float realVelocity = playerController.GetXVelocity() / depth;
+        float realVelocity = playerController.speed / depth;
         Vector2 pos = transform.localPosition;
 
         Debug.Log("Current X position: " + pos.x);
@@ -29,7 +29,7 @@ public class Parallax : MonoBehaviour
 
         pos.x -= realVelocity * Time.deltaTime;
 
-        if(pos.x <= -15)
+        if(pos.x <= -19)
         {
             Debug.Log("dm");
             pos.x = 40;

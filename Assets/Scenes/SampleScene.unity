@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 9731236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.26, y: -1.27, z: 0}
+  m_LocalPosition: {x: 4.26, y: -3.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 81444724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.9, y: 2.67, z: 0}
+  m_LocalPosition: {x: 21.9, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -400,13 +400,11 @@ Transform:
   m_GameObject: {fileID: 315502666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.006, y: -1.521, z: 0}
+  m_LocalPosition: {x: -8.93, y: -2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 799972365}
-  - {fileID: 519420032}
-  - {fileID: 687076210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &315502670
@@ -571,7 +569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 6
   jumpTimeMax: 5
-  maxXVelocity: 100
+  speed: 0
+  maxSpeed: 100
   maxAcceleration: 10
   acceleration: 10
   distance: 0
@@ -603,7 +602,7 @@ Transform:
   m_GameObject: {fileID: 398934790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.15, y: 2.67, z: 0}
+  m_LocalPosition: {x: 1.15, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -735,7 +734,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -760,11 +759,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.006, y: 1.521, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 315502668}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &680582237
 GameObject:
@@ -793,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 680582237}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.92, y: -0.95, z: 0}
+  m_LocalPosition: {x: 8.92, y: -4.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -889,7 +888,7 @@ Transform:
   m_GameObject: {fileID: 687076209}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.006, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -900,7 +899,7 @@ Transform:
   - {fileID: 9731237}
   - {fileID: 1283072005}
   - {fileID: 680582238}
-  m_Father: {fileID: 315502668}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &799972364
 GameObject:
@@ -1129,7 +1128,7 @@ Transform:
   m_GameObject: {fileID: 1176024460}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.8, y: 2.67, z: 0}
+  m_LocalPosition: {x: 42.8, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1624,8 +1623,8 @@ Transform:
   m_GameObject: {fileID: 2022776551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20000, y: -4.42, z: 0}
-  m_LocalScale: {x: 100000, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -6.55, z: 0}
+  m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1732,7 +1731,9 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 519420032}
   - {fileID: 315502668}
+  - {fileID: 687076210}
   - {fileID: 2022776554}
   - {fileID: 1118190033}
   - {fileID: 1947564002}

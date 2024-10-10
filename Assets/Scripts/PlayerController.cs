@@ -10,15 +10,11 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
-    public float GetXVelocity()
-    {
-        return rb.velocity.x;
-    }
-
     [SerializeField] float jumpForce;
     [SerializeField] private float jumpTimeMax;
     private float jumpTimeCounter;
-    public float maxXVelocity = 100;
+    public float speed;
+    public float maxSpeed = 100;
     public float maxAcceleration = 10;
     public float acceleration;
     public float distance = 0;
@@ -38,24 +34,23 @@ public class PlayerController : MonoBehaviour
     {
         HandleJump();
 
-        distance += rb.velocity.x * Time.deltaTime;
+        distance += speed * Time.deltaTime;
 
         if (isGrounded)
         {
             // Tính tỷ lệ vận tốc hiện tại so với vận tốc tối đa
-            float velocityRatio = rb.velocity.x / maxXVelocity;
+            float velocityRatio = speed / maxSpeed;
 
             // Tính gia tốc dựa trên tỷ lệ vận tốc hiện tại
             acceleration = maxAcceleration * (1 - velocityRatio);
 
             // Cộng gia tốc vào vận tốc hiện tại
-            rb.velocity = new Vector2(rb.velocity.x + acceleration * Time.deltaTime, rb.velocity.y);
+            speed += acceleration * Time.deltaTime;
 
-            // Giới hạn vận tốc không vượt quá maxXVelocity
-            if (rb.velocity.x >= maxXVelocity)
+            // Giới hạn vận tốc không vượt quá maxSpeed
+            if (speed >= maxSpeed)
             {
-                //rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxXVelocity, rb.velocity.y);
-                rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
+                speed = maxSpeed;
             }
         }
     }
