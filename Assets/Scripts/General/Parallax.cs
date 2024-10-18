@@ -28,7 +28,6 @@ public class Parallax : MonoBehaviour
 
         if(pos.x <= -19)
         {
-            Debug.Log("dm");
             pos.x = 40;
         }
 

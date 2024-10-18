@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 315502670}
   - component: {fileID: 315502671}
   - component: {fileID: 315502672}
+  - component: {fileID: 315502673}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -869,6 +870,19 @@ MonoBehaviour:
   acceleration: 10
   distance: 0
   isHoldingJump: 0
+  isGrounded: 1
+--- !u!114 &315502673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315502666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59cbc2d24ea05484eab5f2f4b071007f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &321629600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,6 +1857,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &645653599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645653600}
+  - component: {fileID: 645653601}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Obstacle
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645653600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645653599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.86, y: -6.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &645653601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645653599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e13ab1bbfbf3ce439dbe2f1baea3298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 5469076604477713001, guid: 973341c061f7c4b4a8ab48b7be86dc5c, type: 3}
+  obstacleSpawnTime: 4
+  obstacleSpeed: 3
 --- !u!1 &650119201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,7 +4152,7 @@ GameObject:
   - component: {fileID: 2022776552}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4707,3 +4769,4 @@ SceneRoots:
   - {fileID: 2022776554}
   - {fileID: 1118190033}
   - {fileID: 1947564002}
+  - {fileID: 645653600}

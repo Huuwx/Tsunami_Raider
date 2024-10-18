@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public float distance = 0;
 
     public bool isHoldingJump = false;
-    private bool isGrounded = true;
+    public bool isGrounded = true;
 
     // Start is called before the first frame update
     void Start()
@@ -86,15 +86,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             isHoldingJump = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision != null)
-        {
-            isGrounded = true;
-            Debug.Log("Cham dat");
         }
     }
 }
