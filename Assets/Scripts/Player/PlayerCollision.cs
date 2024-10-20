@@ -13,11 +13,6 @@ public class PlayerCollision : MonoBehaviour
                 Destroy(gameObject);
                 Debug.Log("Chet");
             }
-            else if(collision.gameObject.tag == "Ground")
-            {
-                PlayerController.Instance.isGrounded = true;
-                Debug.Log("Cham dat");
-            }
         }
     }
 }

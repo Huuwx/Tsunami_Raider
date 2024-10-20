@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private static PlayerController instance;
     public static PlayerController Instance { get { return instance; } }
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     [SerializeField] float jumpForce;
     [SerializeField] private float jumpTimeMax;
