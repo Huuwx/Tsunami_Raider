@@ -44,6 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: backPlatform
+    uniqueID: 1841352969
+    locked: 0
+  - name: Glass
+    uniqueID: 2114673843
+    locked: 0
+  - name: Platform
+    uniqueID: 1605989931
+    locked: 0
   - name: Ship
     uniqueID: 2685859791
     locked: 0
