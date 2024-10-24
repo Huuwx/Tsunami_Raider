@@ -18,7 +18,7 @@ public class ObstacleController : MonoBehaviour
 
     private void DestroyObstacle()
     {
-        if(transform.position.x <= -19)
+        if(transform.position.x <= -40)
         {
             Destroy(gameObject);
         }

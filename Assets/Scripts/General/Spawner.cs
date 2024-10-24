@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
@@ -7,10 +7,15 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclePrefabs;
 
-    public float obstacleSpawnTime = 7f;
+    public float obstacleSpawnTime = 15f;
     public float obstacleSpeed = 1f;
 
-    private float timeUntilObstacleSpawn;
+    [SerializeField] private float timeUntilObstacleSpawn;
+
+    private void Awake()
+    {
+        timeUntilObstacleSpawn = 0f;
+    }
 
     private void Update()
     {
