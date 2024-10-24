@@ -8,12 +8,12 @@ public class PlayerCollision : MonoBehaviour
     {
         if(collision != null)
         {
-            if(collision.gameObject.tag == "Obstacle")
+            if(collision.gameObject.CompareTag("Obstacle"))
             {
                 Destroy(gameObject);
                 Debug.Log("Chet");
             }
-            else if(collision.gameObject.tag == "Ground")
+            else if(collision.gameObject.CompareTag("Ground"))
             {
                 PlayerController.Instance.isGrounded = true;
             }

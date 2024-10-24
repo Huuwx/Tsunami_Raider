@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclePrefabs;
 
-    public float obstacleSpawnTime = 2f;
+    public float obstacleSpawnTime = 7f;
     public float obstacleSpeed = 1f;
 
     private float timeUntilObstacleSpawn;
@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
 
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
 
-        Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
-        obstacleRB.velocity = Vector2.left * obstacleSpeed;
+        //Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
+        //obstacleRB.velocity = Vector2.left * obstacleSpeed;
     }
 }

@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
+        HandleSpeed();
         DestroyObstacle();
     }
 
@@ -15,5 +22,10 @@ public class ObstacleController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void HandleSpeed()
+    {
+        rb.velocity = Vector2.left * (PlayerController.Instance.speed / 8);  
     }
 }
