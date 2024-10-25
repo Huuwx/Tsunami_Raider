@@ -66,5 +66,13 @@ public class WaterSpring : MonoBehaviour
 
             velocity += speed.y / resistance;
         }
+        else if (other.gameObject.tag.Equals("Obstacle"))
+        {
+            Rigidbody2D rb = other.gameObject.GetComponent<ObstacleController>().getRb();
+
+            var speed = rb.velocity;
+
+            velocity += speed.y / resistance;
+        }
     }
 }

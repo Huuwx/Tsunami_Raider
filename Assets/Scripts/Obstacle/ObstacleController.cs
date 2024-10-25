@@ -6,6 +6,8 @@ public class ObstacleController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public Rigidbody2D getRb() { return rb; }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
