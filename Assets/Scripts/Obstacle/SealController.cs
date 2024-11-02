@@ -18,7 +18,6 @@ public class SealController : ObstacleController
         base.Update();
         if (transform.position.x <= jumpPoint && transform.position.x >= endPoint)
         {
-            Debug.Log("ok");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }

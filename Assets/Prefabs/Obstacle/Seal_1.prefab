@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1990674954749817307}
-  m_Layer: 0
+  - component: {fileID: 7684991598045744413}
+  - component: {fileID: 8289553373360744362}
+  m_Layer: 8
   m_Name: Seal_1
   m_TagString: Obstacle
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
@@ -32,6 +34,48 @@ Transform:
   - {fileID: 8648890620039155971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &7684991598045744413
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267464879870221783}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 8
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &8289553373360744362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267464879870221783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a383c5fdc5e9443896669fc21f19a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPoint: 13.3
+  endPoint: 0
+  jumpForce: 6
 --- !u!1 &3993093640038388381
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,10 +86,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8648890620039155971}
   - component: {fileID: 1236212070487083031}
-  - component: {fileID: 5829923646311920636}
   - component: {fileID: 6813055029618196685}
-  - component: {fileID: 4723586833186266050}
-  m_Layer: 0
+  - component: {fileID: 1615484958517866627}
+  m_Layer: 8
   m_Name: Seal
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -119,33 +162,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &5829923646311920636
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3993093640038388381}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 8
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &6813055029618196685
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,18 +207,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.921875, y: 1.0625}
   m_EdgeRadius: 0
---- !u!114 &4723586833186266050
-MonoBehaviour:
+--- !u!95 &1615484958517866627
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3993093640038388381}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a383c5fdc5e9443896669fc21f19a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpPoint: 13
-  endPoint: 0
-  jumpForce: 6
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ec8d07194f9a124fa4ee71df656fa12, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

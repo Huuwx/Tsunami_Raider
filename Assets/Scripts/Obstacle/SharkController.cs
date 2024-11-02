@@ -17,7 +17,6 @@ public class SharkController : ObstacleController
         base.Update();
         if (transform.position.x <= jumpPoint)
         {
-            Debug.Log("ok");
             StartCoroutine(WaterJump());
         }
     }
