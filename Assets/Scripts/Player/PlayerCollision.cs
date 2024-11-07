@@ -8,14 +8,21 @@ public class PlayerCollision : MonoBehaviour
     {
         if(collision != null)
         {
-            if(collision.gameObject.CompareTag("Obstacle"))
-            {
-                Destroy(gameObject);
-                Debug.Log("Chet");
-            }
-            else if(collision.gameObject.CompareTag("Ground"))
+            if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Ground"))
             {
                 PlayerController.Instance.isGrounded = true;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision != null)
+        {
+            if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                Destroy(gameObject);
+                Debug.Log("chet");
             }
         }
     }

@@ -26,13 +26,15 @@ public class SharkController : ObstacleController
         Vector3 startPos = transform.position;
         Vector3 endPos = new Vector3(transform.position.x, posToJump, transform.position.z);
 
+        Debug.Log("ok");
+
         float t = 0;
 
         while (t <= 1)
         {
             transform.position = Vector3.Lerp(startPos, endPos, t);
 
-            t += Time.deltaTime * 4;
+            t += Time.deltaTime * 4f;
 
             yield return new WaitForEndOfFrame();
         }
@@ -40,4 +42,6 @@ public class SharkController : ObstacleController
         transform.position = endPos;
 
     }
+
+    
 }

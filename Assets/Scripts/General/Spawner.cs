@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclePrefabs;
 
-    public float plusTime;
+    public float plusTimeSpawner;
     public float obstacleSpawnTime;
     public float obstacleSpeed = 1f;
 
@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnLoob()
     {
-        obstacleSpawnTime = PlayerController.Instance.acceleration + plusTime; // Giam thoi gian spawn dua tren gia toc
+        obstacleSpawnTime = PlayerController.Instance.acceleration + plusTimeSpawner; // Giam thoi gian spawn dua tren gia toc
 
         timeUntilObstacleSpawn += Time.deltaTime;
 
