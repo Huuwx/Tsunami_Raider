@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour
 {
     [SerializeField] ParticleSystem movementParticle;
+    [SerializeField] ParticleSystem fallParticle;
 
     [Range(0, 10)]
     [SerializeField] int occurAfterVelocity;
@@ -15,9 +16,38 @@ public class ParticleController : MonoBehaviour
     [SerializeField] Rigidbody2D playerRb;
 
     float counter;
+    bool isOnGround;
 
     private void Update()
     {
-        
+        counter += Time.deltaTime;
+
+        if(isOnGround && Mathf.Abs(playerRb.velocity.x) > occurAfterVelocity )
+        {
+            if(counter > dustFormationPeriod)
+            {
+                movementParticle.Play();
+                counter = 0;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            fallParticle.Play();
+            movementParticle.Play();
+            isOnGround = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            movementParticle.Stop();
+            isOnGround = false;
+        }
     }
 }
