@@ -6,6 +6,8 @@ public class ParticleController : MonoBehaviour
 {
     [SerializeField] ParticleSystem movementParticle;
     [SerializeField] ParticleSystem fallParticle;
+    [SerializeField] ParticleSystem bNitroPartical;
+    [SerializeField] ParticleSystem fNitroPartical;
 
     [Range(0, 10)]
     [SerializeField] int occurAfterVelocity;
@@ -49,5 +51,29 @@ public class ParticleController : MonoBehaviour
             movementParticle.Stop();
             isOnGround = false;
         }
+    }
+
+    public void PlayBNitro()
+    {
+        Debug.Log("lua phi phai");
+        bNitroPartical.Play();
+    }
+
+    public void StopBNitro() 
+    {
+        Debug.Log("tat lua");
+        bNitroPartical.Stop();
+    }
+
+    public void PlayFNitro()
+    {
+        Debug.Log("lua phi phai");
+        fNitroPartical.Play();
+    }
+
+    public void StopFNitro()
+    {
+        Debug.Log("tat lua");
+        fNitroPartical.Stop();
     }
 }

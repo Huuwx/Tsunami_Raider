@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private static PlayerController instance;
     public static PlayerController Instance { get { return instance; } }
 
+    [SerializeField] private ParticleController particleController;
+
     public Rigidbody2D rb;
 
     [SerializeField] float jumpForce;
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            particleController.PlayBNitro();
+            particleController.PlayFNitro();
             isHoldingJump = true;
         }
 
@@ -79,12 +83,16 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                particleController.StopBNitro();
+                particleController.StopFNitro();
                 isHoldingJump = false;
             }
         }
 
         if (Input.GetButtonUp("Jump"))
         {
+            particleController.StopBNitro();
+            particleController.StopFNitro();
             isHoldingJump = false;
         }
     }

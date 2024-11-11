@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if(collision != null)
         {
-            if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Ground"))
+            if(collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
             {
                 PlayerController.Instance.isGrounded = true;
             }

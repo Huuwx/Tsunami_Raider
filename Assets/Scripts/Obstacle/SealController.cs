@@ -40,7 +40,7 @@ public class SealController : ObstacleController
         {
             transform.position = Vector3.Lerp(startPos, endPos, t);
 
-            t += Time.deltaTime * 2f;
+            t += Time.deltaTime * 2.5f;
 
             yield return new WaitForEndOfFrame();
         }
@@ -60,7 +60,7 @@ public class SealController : ObstacleController
         {
             transform.position = Vector3.Lerp(startPos, endPos, t);
 
-            t += Time.deltaTime * 0.7f;
+            t += Time.deltaTime * 0.5f;
 
             yield return new WaitForEndOfFrame();
         }
