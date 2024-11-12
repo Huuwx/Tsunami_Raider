@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SharkController : ObstacleController
 {
+    [SerializeField] ParticleSystem fallParticle;
+
     public float posToJump = -4f;
     public float jumpPoint = 0f;
 
@@ -19,10 +21,15 @@ public class SharkController : ObstacleController
         {
             StartCoroutine(WaterJump());
         }
+        if(transform.position.x < jumpPoint - 1f)
+        {
+            fallParticle.Stop();
+        }
     }
 
     private IEnumerator WaterJump()
     {
+        fallParticle.Play();
         Vector3 startPos = transform.position;
         Vector3 endPos = new Vector3(transform.position.x, posToJump, transform.position.z);
 
@@ -40,8 +47,5 @@ public class SharkController : ObstacleController
         }
 
         transform.position = endPos;
-
     }
-
-    
 }

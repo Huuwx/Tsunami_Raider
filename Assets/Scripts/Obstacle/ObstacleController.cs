@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    
+
     protected Rigidbody2D rb;
 
     public Rigidbody2D getRb() { return rb; }

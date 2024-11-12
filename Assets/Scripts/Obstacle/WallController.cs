@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WallController : ObstacleController
 {
+    [SerializeField] ParticleSystem fallParticle;
+
     public float fallPos;
     public float fallStart;
 
@@ -38,5 +40,13 @@ public class WallController : ObstacleController
         }
 
         transform.position = endPos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            fallParticle.Play();
+        }
     }
 }

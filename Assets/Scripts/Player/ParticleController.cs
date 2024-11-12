@@ -55,25 +55,21 @@ public class ParticleController : MonoBehaviour
 
     public void PlayBNitro()
     {
-        Debug.Log("lua phi phai");
         bNitroPartical.Play();
     }
 
     public void StopBNitro() 
     {
-        Debug.Log("tat lua");
         bNitroPartical.Stop();
     }
 
     public void PlayFNitro()
     {
-        Debug.Log("lua phi phai");
         fNitroPartical.Play();
     }
 
     public void StopFNitro()
     {
-        Debug.Log("tat lua");
         fNitroPartical.Stop();
     }
 }

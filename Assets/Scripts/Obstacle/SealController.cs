@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SealController : ObstacleController
 {
+    [SerializeField] ParticleSystem fallParticle;
+
     public float posToJump = -4f;
     public float fallPos;
     public float jumpPoint = 0f;
@@ -66,5 +68,13 @@ public class SealController : ObstacleController
         }
 
         transform.position = endPos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            fallParticle.Play();
+        }
     }
 }
