@@ -9,7 +9,6 @@ public class Spawner : MonoBehaviour
 
     public float plusTimeSpawner;
     public float obstacleSpawnTime;
-    public float obstacleSpeed = 1f;
 
     [SerializeField] private float timeUntilObstacleSpawn;
 
@@ -23,7 +22,7 @@ public class Spawner : MonoBehaviour
         SpawnLoob();
     }
 
-    private void SpawnLoob()
+    protected virtual void SpawnLoob()
     {
         obstacleSpawnTime = PlayerController.Instance.acceleration + plusTimeSpawner; // Giam thoi gian spawn dua tren gia toc
 
@@ -41,8 +40,5 @@ public class Spawner : MonoBehaviour
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
 
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
-
-        //Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>();
-        //obstacleRB.velocity = Vector2.left * obstacleSpeed;
     }
 }

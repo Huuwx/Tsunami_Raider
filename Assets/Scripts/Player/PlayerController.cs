@@ -9,12 +9,11 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get { return instance; } }
 
     [SerializeField] private ParticleController particleController;
+    [SerializeField] private NitroController nitroController;
 
     public Rigidbody2D rb;
 
     [SerializeField] float jumpForce;
-    [SerializeField] private float jumpTimeMax;
-    private float jumpTimeCounter;
     public float speed;
     public float maxSpeed = 100;
     public float maxAcceleration = 10;
@@ -36,6 +35,11 @@ public class PlayerController : MonoBehaviour
     {
         HandleJump();
 
+        if(isGrounded) 
+        {
+            nitroController.RefillJumpTime();
+        }
+        
         distance += speed * Time.deltaTime;
 
         if (isGrounded)
@@ -69,17 +73,15 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
-            jumpTimeCounter = jumpTimeMax;
         }
 
-        if(Input.GetButton("Jump") && isHoldingJump)
+        if(isHoldingJump)
         {
-            if(jumpTimeCounter > 0) 
+            if(nitroController.getJumpTimeCounter() > 0) 
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpTimeCounter -= Time.deltaTime;
+                nitroController.SubtractJumpTime();
             }
             else
             {
