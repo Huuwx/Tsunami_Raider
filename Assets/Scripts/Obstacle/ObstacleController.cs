@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
-    
-
     protected Rigidbody2D rb;
 
     public Rigidbody2D getRb() { return rb; }
@@ -22,7 +20,7 @@ public class ObstacleController : MonoBehaviour
 
     private void DestroyObstacle()
     {
-        if(transform.position.x <= -40)
+        if(transform.position.x <= -33.5)
         {
             Destroy(gameObject);
         }
