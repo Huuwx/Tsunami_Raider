@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     public float distance = 0;
 
+    public int coinCounter = 0;
+
     public bool isHoldingJump = false;
     public bool isGrounded = true;
 

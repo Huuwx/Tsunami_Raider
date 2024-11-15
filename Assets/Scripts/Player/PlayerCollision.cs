@@ -24,6 +24,10 @@ public class PlayerCollision : MonoBehaviour
                 Destroy(gameObject);
                 Debug.Log("chet");
             }
+            if (collision.gameObject.CompareTag("Coin"))
+            {
+                collision.gameObject.GetComponent<CoinController>().SetTriggerCollecting();
+            }
         }
     }
 }

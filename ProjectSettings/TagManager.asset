@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Spring
   - Platform
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -53,6 +54,9 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1605989931
+    locked: 0
+  - name: Coin
+    uniqueID: 1947142483
     locked: 0
   - name: Ship
     uniqueID: 2685859791

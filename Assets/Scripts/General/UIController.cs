@@ -7,11 +7,13 @@ public class UIController : MonoBehaviour
 {
     PlayerController playerController;
     public TextMeshProUGUI distanceText;
+    public TextMeshProUGUI coinCounterText;
 
     private void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         distanceText = GameObject.Find("Distance Text").GetComponent<TextMeshProUGUI>();
+        coinCounterText = GameObject.Find("Coin Counter Text").GetComponent<TextMeshProUGUI>();
     }
 
     // Start is called before the first frame update
@@ -24,6 +26,9 @@ public class UIController : MonoBehaviour
     void Update()
     {
         int distance = Mathf.FloorToInt(playerController.distance);
-        distanceText.text = distance + " m";
+        distanceText.text = distance + "m";
+
+        int coinCounter = playerController.coinCounter;
+        coinCounterText.text = coinCounter + "";
     }
 }
