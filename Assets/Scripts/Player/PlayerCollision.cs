@@ -30,4 +30,15 @@ public class PlayerCollision : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision != null)
+        {
+            if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
+            {
+                PlayerController.Instance.isGrounded = false;
+            }
+        }
+    }
 }

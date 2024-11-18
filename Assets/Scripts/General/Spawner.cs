@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obstaclePrefabs;
+    [SerializeField] protected List<GameObject> obstaclePrefabs;
 
     public float plusTimeSpawner;
     public float obstacleSpawnTime;
@@ -35,9 +35,9 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void Spawn()
+    protected virtual void Spawn()
     {
-        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Count)];
 
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
     }

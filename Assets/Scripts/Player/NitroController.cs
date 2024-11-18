@@ -41,6 +41,11 @@ public class NitroController : MonoBehaviour
         UpdateNitroBar();
     }
 
+    public void StopRefill()
+    {
+        jumpTimeCounter -= 0;
+    }
+
     private void UpdateNitroBar()
     {
         nitroBarFill.fillAmount = jumpTimeCounter / jumpTimeMax;
