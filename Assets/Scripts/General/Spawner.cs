@@ -7,6 +7,8 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] protected List<GameObject> obstaclePrefabs;
 
+    public bool canSpawn = true;
+
     public float plusTimeSpawner;
     public float obstacleSpawnTime;
 
@@ -19,7 +21,10 @@ public class Spawner : MonoBehaviour
 
     protected virtual void Update()
     {
-        SpawnLoob();
+        if (canSpawn)
+        {
+            SpawnLoob();
+        }
     }
 
     protected virtual void SpawnLoob()

@@ -34,8 +34,6 @@ public class SealController : ObstacleController
         Vector3 startPos = transform.position;
         Vector3 endPos = new Vector3(transform.position.x, posToJump, transform.position.z);
 
-        Debug.Log("ok");
-
         float t = 0;
 
         while (t <= 1)
