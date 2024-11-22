@@ -9,6 +9,8 @@ public class ItemsController : MonoBehaviour
 
     public float timeToUseItem;
 
+    public bool isClicked = false;
+
     private void Update()
     {
         timeToUseItem += Time.deltaTime;
@@ -24,5 +26,22 @@ public class ItemsController : MonoBehaviour
         pSpawner.canSpawn = false;
         eSpawner.canSpawn = false;
         gameObject.SetActive( false );
+    }
+
+    public IEnumerator CRespawn()
+    {
+        timeToUseItem = 0;
+        PlayerController.Instance.Respawn();
+        yield return StartCoroutine(PlayerController.Instance.Undying());
+        gameObject.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        if (!isClicked)
+        {
+            isClicked = true;
+            StartCoroutine(CRespawn());
+        }
     }
 }

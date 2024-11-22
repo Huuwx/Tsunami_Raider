@@ -19,12 +19,15 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    private Animator animator;
+
     [SerializeField] float jumpForce;
     public float currentSpeed;
     public float speed;
     public float maxSpeed = 100;
     public float maxAcceleration = 10;
     public float acceleration;
+    public float currentAcceleration;
     public float distance = 0;
     public float BoostedPos;
 
@@ -35,74 +38,83 @@ public class PlayerController : MonoBehaviour
     public bool isBoosted = false;
     public bool isJumpBoosted = true;
     private bool canJump = true;
+    private bool isDead = false;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(canJump)
+        if (!isDead)
         {
-            HandleJump();
-        }
-        
-        if(isGrounded) 
-        {
-            nitroController.RefillJumpTime();
-        }
-        
-        distance += speed * Time.deltaTime;
-
-        if (isGrounded && !isBoosted)
-        {
-            // Tính tỷ lệ vận tốc hiện tại so với vận tốc tối đa
-            float velocityRatio = speed / maxSpeed;
-
-            // Tính gia tốc dựa trên tỷ lệ vận tốc hiện tại
-            acceleration = maxAcceleration * (1 - velocityRatio);
-
-            // Cộng gia tốc vào vận tốc hiện tại
-            speed += acceleration * Time.deltaTime;
-
-            // Giới hạn vận tốc không vượt quá maxSpeed
-            if (speed >= maxSpeed)
+            if (canJump)
             {
-                speed = maxSpeed;
+                HandleJump();
             }
-        }
 
-        if (isBoosted)
-        {
-            canJump = false;
-            rocket_1.SetActive(true);
-            speed = maxSpeed * 2;
-            particleController.PlayRocket1Nitro();
-            StartCoroutine(Boosted());
-        }
-        else
-        {
-            if (isJumpBoosted == false) 
+            if (isGrounded)
             {
-                canJump = true;
-                rocket_1.SetActive(false);
-                particleController.StopRocket1Nitro();
-                speed = currentSpeed + 15f;
-                StartCoroutine(BackFromBoosted());
-                isJumpBoosted = true;
-                pSpawner.canSpawn = true;
-                eSpawner.canSpawn = true;
+                nitroController.RefillJumpTime();
             }
-            currentSpeed = speed;
-        }
-        if(distance >= 1500f)
-        {
-            isBoosted = false;
+
+            distance += speed * Time.deltaTime;
+
+            if (isGrounded && !isBoosted && !isDead)
+            {
+                // Tính tỷ lệ vận tốc hiện tại so với vận tốc tối đa
+                float velocityRatio = speed / maxSpeed;
+
+                // Tính gia tốc dựa trên tỷ lệ vận tốc hiện tại
+                acceleration = maxAcceleration * (1 - velocityRatio);
+
+                // Cộng gia tốc vào vận tốc hiện tại
+                speed += acceleration * Time.deltaTime;
+
+                // Giới hạn vận tốc không vượt quá maxSpeed
+                if (speed >= maxSpeed)
+                {
+                    speed = maxSpeed;
+                }
+            }
+
+            if (isBoosted)
+            {
+                canJump = false;
+                rocket_1.SetActive(true);
+                speed = maxSpeed * 2;
+                particleController.PlayRocket1Nitro();
+                StartCoroutine(Boosted());
+            }
+            else
+            {
+                if (isJumpBoosted == false)
+                {
+                    canJump = true;
+                    rocket_1.SetActive(false);
+                    particleController.StopRocket1Nitro();
+                    speed = currentSpeed + 15f;
+                    StartCoroutine(BackFromBoosted());
+                    isJumpBoosted = true;
+                    pSpawner.canSpawn = true;
+                    eSpawner.canSpawn = true;
+                }
+                currentSpeed = speed;
+            }
+            if (distance >= 1500f)
+            {
+                isBoosted = false;
+            }
         }
     }
 
@@ -160,14 +172,14 @@ public class PlayerController : MonoBehaviour
             isHoldingJump = true;
         }
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isGrounded = false;
         }
 
-        if(isHoldingJump)
+        if (isHoldingJump)
         {
-            if(nitroController.getJumpTimeCounter() > 0) 
+            if (nitroController.getJumpTimeCounter() > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 nitroController.SubtractJumpTime();
@@ -186,5 +198,41 @@ public class PlayerController : MonoBehaviour
             particleController.StopFNitro();
             isHoldingJump = false;
         }
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        rb.simulated = false;
+        rb.velocity = new Vector2(0, 0);
+        transform.localScale = new Vector3(0, 0, 0);
+        speed = 0;
+        pSpawner.canSpawn = false;
+        eSpawner.canSpawn = false;
+    }
+
+    public void Respawn()
+    {
+        rb.simulated = true;
+        isDead = false;
+        transform.position = startPos;
+        transform.localScale = new Vector3(1, 1, 1);
+        speed = currentSpeed;
+        pSpawner.canSpawn = true;
+        eSpawner.canSpawn = true;
+    }
+
+    public IEnumerator Undying()
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int obstacleLayer = LayerMask.NameToLayer("Obstacle");
+
+        Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, true);
+
+        animator.SetBool("Undying", true);
+        yield return new WaitForSeconds(3f);
+        animator.SetBool("Undying", false);
+
+        Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, false);
     }
 }

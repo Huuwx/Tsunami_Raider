@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private ParticleController particleController;
+    [SerializeField] private GameObject respawnItem;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,8 +25,10 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
-                Destroy(gameObject);
-                Debug.Log("chet");
+                PlayerController.Instance.Die();
+                respawnItem.SetActive(true);
+                ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
+                itemsController.isClicked = false;
             }
             if (collision.gameObject.CompareTag("Coin"))
             {
