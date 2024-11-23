@@ -30,7 +30,6 @@ public class ItemsController : MonoBehaviour
 
     public IEnumerator CRespawn()
     {
-        timeToUseItem = 0;
         PlayerController.Instance.Respawn();
         yield return StartCoroutine(PlayerController.Instance.Undying());
         gameObject.SetActive(false);

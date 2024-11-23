@@ -200,9 +200,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Die()
+    private IEnumerator PushBack()
+    {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = new Vector3(startPos.x - 10f, startPos.y + 5f, transform.position.z);
+
+        float t = 0;
+
+        while (t <= 1)
+        {
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+
+            t += Time.deltaTime * 2f;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.position = endPos;
+    }
+
+    public void DieA()
     {
         isDead = true;
+        animator.SetBool("Die", isDead);
+        StartCoroutine(PushBack());
+    }
+
+
+    public void Die()
+    {
         rb.simulated = false;
         rb.velocity = new Vector2(0, 0);
         transform.localScale = new Vector3(0, 0, 0);
@@ -215,6 +241,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.simulated = true;
         isDead = false;
+        animator.SetBool("Die", isDead);
         transform.position = startPos;
         transform.localScale = new Vector3(1, 1, 1);
         speed = currentSpeed;
@@ -230,7 +257,8 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, true);
 
         animator.SetBool("Undying", true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
+        Debug.Log("?");
         animator.SetBool("Undying", false);
 
         Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, false);

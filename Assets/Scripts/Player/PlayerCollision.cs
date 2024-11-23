@@ -25,10 +25,11 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
-                PlayerController.Instance.Die();
+                PlayerController.Instance.DieA();
                 respawnItem.SetActive(true);
                 ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
                 itemsController.isClicked = false;
+                itemsController.timeToUseItem = 0;
             }
             if (collision.gameObject.CompareTag("Coin"))
             {
