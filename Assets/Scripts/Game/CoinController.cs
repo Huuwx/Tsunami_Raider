@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
+    private GameManager gameManager;
+
     private Animator animator;
+
 
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         animator = GetComponent<Animator>();
     }
 
@@ -18,7 +23,7 @@ public class CoinController : MonoBehaviour
 
     public void Destroy()
     {
-        PlayerController.Instance.coinCounter += 1;
+        gameManager.coinCounter += 1;
         Destroy(gameObject);
     }
 }

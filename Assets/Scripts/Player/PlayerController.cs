@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private static PlayerController instance;
     public static PlayerController Instance { get { return instance; } }
 
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private ParticleController particleController;
     [SerializeField] private NitroController nitroController;
     [SerializeField] private PlatformSpawner pSpawner;
@@ -28,10 +30,7 @@ public class PlayerController : MonoBehaviour
     public float maxAcceleration = 10;
     public float acceleration;
     public float currentAcceleration;
-    public float distance = 0;
     public float BoostedPos;
-
-    public int coinCounter = 0;
 
     public bool isHoldingJump = false;
     public bool isGrounded = true;
@@ -68,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 nitroController.RefillJumpTime();
             }
 
-            distance += speed * Time.deltaTime;
+            gameManager.GainedDistance(speed);
 
             if (isGrounded && !isBoosted && !isDead)
             {
@@ -92,7 +91,7 @@ public class PlayerController : MonoBehaviour
             {
                 canJump = false;
                 rocket_1.SetActive(true);
-                speed = maxSpeed * 2;
+                speed = maxSpeed * 3;
                 particleController.PlayRocket1Nitro();
                 StartCoroutine(Boosted());
             }
@@ -111,7 +110,7 @@ public class PlayerController : MonoBehaviour
                 }
                 currentSpeed = speed;
             }
-            if (distance >= 1500f)
+            if (gameManager.distance >= 1500f)
             {
                 isBoosted = false;
             }
@@ -226,7 +225,6 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(PushBack());
     }
 
-
     public void Die()
     {
         rb.simulated = false;
@@ -235,6 +233,7 @@ public class PlayerController : MonoBehaviour
         speed = 0;
         pSpawner.canSpawn = false;
         eSpawner.canSpawn = false;
+        gameManager.GameOver();
     }
 
     public void Respawn()
@@ -257,7 +256,7 @@ public class PlayerController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, true);
 
         animator.SetBool("Undying", true);
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
         Debug.Log("?");
         animator.SetBool("Undying", false);
 

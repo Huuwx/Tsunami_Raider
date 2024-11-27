@@ -5,13 +5,12 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    PlayerController playerController;
+    [SerializeField] GameManager gameManager;
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI coinCounterText;
 
     private void Awake()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         distanceText = GameObject.Find("Distance Text").GetComponent<TextMeshProUGUI>();
         coinCounterText = GameObject.Find("Coin Counter Text").GetComponent<TextMeshProUGUI>();
     }
@@ -25,10 +24,10 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int distance = Mathf.FloorToInt(playerController.distance);
+        int distance = Mathf.FloorToInt(gameManager.distance);
         distanceText.text = distance + "m";
 
-        int coinCounter = playerController.coinCounter;
+        int coinCounter = gameManager.coinCounter;
         coinCounterText.text = coinCounter + "";
     }
 }
