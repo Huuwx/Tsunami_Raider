@@ -35,12 +35,16 @@ public class GameManager : MonoBehaviour
         if (data.highestDistance < distance)
         {
             data.highestDistance = distance;
-
-            string saveString = JsonUtility.ToJson(data);
-
-            SaveSystem.Save("save", saveString);
         }
+
+        data.currentCoin += coinCounter;
+
+        string saveString = JsonUtility.ToJson(data);
+
+        SaveSystem.Save("save", saveString);
+
         Debug.Log("Current Distance: " + Mathf.FloorToInt(distance));
         Debug.Log("Highest Distance: " + Mathf.FloorToInt(data.highestDistance));
+        Debug.Log("Current Coin: " + Mathf.FloorToInt(data.currentCoin));
     }
 }

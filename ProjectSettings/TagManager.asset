@@ -9,6 +9,8 @@ TagManager:
   - Spring
   - Platform
   - Coin
+  - RespawnItem
+  - RocketItem
   layers:
   - Default
   - TransparentFX
