@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+
+    public static GameManager Instance { get { return instance; } }
+
     public float distance;
     public int coinCounter = 0;
 
     public Data data;
 
-    private void Start()
+    private void Awake()
     {
+        instance = this;
+
+        //data.currentRocketItem = 100;
+        //data.currentRespawnItem = 100;
+
+        //SaveData();
+
         string loadedData = SaveSystem.Load("save");
         if(loadedData != null)
         {
@@ -23,6 +35,13 @@ public class GameManager : MonoBehaviour
 
         coinCounter = 0;
         distance = 0;
+    }
+
+    public void SaveData()
+    {
+        string saveString = JsonUtility.ToJson(data);
+
+        SaveSystem.Save("save", saveString);
     }
 
     public void GainedDistance(float speed)
@@ -39,9 +58,7 @@ public class GameManager : MonoBehaviour
 
         data.currentCoin += coinCounter;
 
-        string saveString = JsonUtility.ToJson(data);
-
-        SaveSystem.Save("save", saveString);
+        SaveData();
 
         Debug.Log("Current Distance: " + Mathf.FloorToInt(distance));
         Debug.Log("Highest Distance: " + Mathf.FloorToInt(data.highestDistance));

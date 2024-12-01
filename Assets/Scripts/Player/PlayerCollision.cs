@@ -8,8 +8,6 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private ParticleController particleController;
     [SerializeField] private GameObject respawnItem;
 
-    public Data data;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision != null)
@@ -27,20 +25,11 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
-                string loadedData = SaveSystem.Load("save");
-                if (loadedData != null)
-                {
-                    data = JsonUtility.FromJson<Data>(loadedData);
-                }
-                else
-                {
-                    data = new Data();
-                }
+                PlayerController.Instance.DieA();
 
                 ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
-                PlayerController.Instance.DieA();
-                itemsController.ChangeRespawnBtnState(data.currentRespawnItem);
                 respawnItem.SetActive(true);
+                itemsController.ChangeBtnState(GameManager.Instance.data.currentRespawnItem);
                 itemsController.isClicked = false;
                 itemsController.timeToUseItem = 0;
             }

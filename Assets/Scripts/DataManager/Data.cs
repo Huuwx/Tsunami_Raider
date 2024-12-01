@@ -6,7 +6,7 @@ using UnityEngine;
 public class Data
 {
     public float highestDistance;
-    public float currentCoin;
+    public int currentCoin;
     public int currentRocketItem;
     public int currentRespawnItem;
 }

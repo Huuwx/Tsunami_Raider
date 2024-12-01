@@ -15,31 +15,13 @@ public class ItemsController : MonoBehaviour
 
     public TextMeshProUGUI counter;
 
-    public Data data;
-
     public float timeToUseItem;
 
     public bool isClicked = false;
 
     private void Awake()
     {
-        string loadedData = SaveSystem.Load("save");
-        if (loadedData != null)
-        {
-            data = JsonUtility.FromJson<Data>(loadedData);
-        }
-        else
-        {
-            data = new Data();
-        }
-
-        data.currentRespawnItem = 1;
-        data.currentRocketItem = 1;
-
-        string saveString = JsonUtility.ToJson(data);
-
-        SaveSystem.Save("save", saveString);
-        ChangeButtonState();
+        ChangeBtnState(GameManager.Instance.data.currentRocketItem);
     }
 
     private void Update()
@@ -51,19 +33,7 @@ public class ItemsController : MonoBehaviour
         }
     }
 
-    public void ChangeButtonState()
-    {
-        if (gameObject.CompareTag("RocketItem"))
-        {
-            ChangeRespawnBtnState(data.currentRocketItem);
-        }
-        else if (gameObject.CompareTag("RespawnItem"))
-        {
-            ChangeRespawnBtnState(data.currentRespawnItem);
-        }
-    }
-
-    public void ChangeRespawnBtnState(int currentCount)
+    public void ChangeBtnState(int currentCount)
     {
         counter.text = "x" + currentCount;
         if (currentCount == 0)
@@ -89,14 +59,14 @@ public class ItemsController : MonoBehaviour
 
     public void TriggerBoosted()
     {
-        if (data.currentRocketItem > 0)
+        if (GameManager.Instance.data.currentRocketItem > 0)
         {
-            data.currentRocketItem--;
-            string saveString = JsonUtility.ToJson(data);
+            GameManager.Instance.data.currentRocketItem--;
 
-            SaveSystem.Save("save", saveString);
+            GameManager.Instance.SaveData();
 
-            counter.text = "x" + data.currentRocketItem;
+            counter.text = "x" + GameManager.Instance.data.currentRocketItem;
+
             PlayerController.Instance.isBoosted = true;
             pSpawner.canSpawn = false;
             eSpawner.canSpawn = false;
@@ -113,14 +83,13 @@ public class ItemsController : MonoBehaviour
 
     public void Respawn()
     {
-        if (!isClicked && data.currentRespawnItem > 0)
+        if (!isClicked && GameManager.Instance.data.currentRespawnItem > 0)
         {
-            data.currentRespawnItem--;
-            string saveString = JsonUtility.ToJson(data);
+            GameManager.Instance.data.currentRespawnItem--;
+            
+            GameManager.Instance.SaveData();
 
-            SaveSystem.Save("save", saveString);
-
-            counter.text = "x" + data.currentRespawnItem;
+            counter.text = "x" + GameManager.Instance.data.currentRespawnItem;
             isClicked = true;
             StartCoroutine(CRespawn());
         }
