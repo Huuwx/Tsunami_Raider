@@ -18,6 +18,7 @@ public class ItemsController : MonoBehaviour
     public float timeToUseItem;
 
     public bool isClicked = false;
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -30,6 +31,10 @@ public class ItemsController : MonoBehaviour
         if(timeToUseItem > 5f )
         {
             gameObject.SetActive( false );
+            if(isDead == true )
+            {
+                UIController.Instance.GameOver();
+            }
         }
     }
 
@@ -76,6 +81,7 @@ public class ItemsController : MonoBehaviour
 
     public IEnumerator CRespawn()
     {
+        isDead = false;
         PlayerController.Instance.Respawn();
         yield return StartCoroutine(PlayerController.Instance.Undying());
         gameObject.SetActive(false);

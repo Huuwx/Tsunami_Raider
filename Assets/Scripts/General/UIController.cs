@@ -5,20 +5,26 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
+    private static UIController instance;
+
+    public static UIController Instance { get { return instance; } }
+
     [SerializeField] GameManager gameManager;
+
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI coinCounterText;
+    [SerializeField] TextMeshProUGUI distanceTextGO;
+    [SerializeField] TextMeshProUGUI coinCounterTextGO;
+    [SerializeField] TextMeshProUGUI highestDistanceTextGO;
+
+    [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject gameOverPanel;
 
     private void Awake()
     {
+        instance = this;
         distanceText = GameObject.Find("Distance Text").GetComponent<TextMeshProUGUI>();
         coinCounterText = GameObject.Find("Coin Counter Text").GetComponent<TextMeshProUGUI>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -29,5 +35,18 @@ public class UIController : MonoBehaviour
 
         int coinCounter = gameManager.coinCounter;
         coinCounterText.text = coinCounter + "";
+    }
+
+    public void SetActivePausePanel(bool active)
+    {
+        pausePanel.SetActive(active);
+    }
+
+    public void GameOver()
+    {
+        distanceTextGO.text = distanceText.text;
+        coinCounterTextGO.text = coinCounterText.text;
+        highestDistanceTextGO.text = Mathf.FloorToInt(gameManager.data.highestDistance) + "m";
+        gameOverPanel.SetActive(true);
     }
 }

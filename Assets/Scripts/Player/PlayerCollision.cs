@@ -32,6 +32,7 @@ public class PlayerCollision : MonoBehaviour
                 itemsController.ChangeBtnState(GameManager.Instance.data.currentRespawnItem);
                 itemsController.isClicked = false;
                 itemsController.timeToUseItem = 0;
+                itemsController.isDead = true;
             }
             if (collision.gameObject.CompareTag("Coin"))
             {
