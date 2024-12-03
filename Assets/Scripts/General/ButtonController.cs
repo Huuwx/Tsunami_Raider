@@ -23,17 +23,30 @@ public class ButtonController : MonoBehaviour
     public void ReplayBtn()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("SampleScene");
+        if (GameObject.Find("GameOver Popup") != false)
+        {
+            Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
+            GOanimator.SetBool("PopUp", false);
+        }
+        else if (GameObject.Find("Pause Popup") != false)
+        {
+            LoadSceneReplay();
+        }
     }
 
     public void ContinueBtn()
     {
-        Time.timeScale = 1;
         UIController.Instance.SetActivePausePanel(false);
+        Time.timeScale = 1;
     }
 
     public void HomeBtn()
     {
 
+    }
+
+    public void LoadSceneReplay()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
