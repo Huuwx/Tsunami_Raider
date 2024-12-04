@@ -9,6 +9,8 @@ public class ButtonController : MonoBehaviour
 
     public static ButtonController Instance { get { return instance; } }
 
+    [SerializeField] private PopUpController popUpController;
+
     private void Awake()
     {
         instance = this;
@@ -42,11 +44,47 @@ public class ButtonController : MonoBehaviour
 
     public void HomeBtn()
     {
+        SceneManager.LoadScene("HomeScene");
+    }
 
+    public void ItemShopBtn()
+    {
+        SceneManager.LoadScene("ItemShopScene");
     }
 
     public void LoadSceneReplay()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void OpenSettingPopUp()
+    {
+        popUpController.OSettingPopUp();
+        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        Sanimator.SetBool("OPopUp", true);
+    }
+
+    public void CloseSettingPopUp()
+    {
+        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        Sanimator.SetBool("OPopUp", false);
+    }
+
+    public void OpenQuitPopUp()
+    {
+        popUpController.OExitPopUp();
+        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        Sanimator.SetBool("OPopUp", true);
+    }
+
+    public void CloseQuitPopUp()
+    {
+        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        Sanimator.SetBool("OPopUp", false);
     }
 }
