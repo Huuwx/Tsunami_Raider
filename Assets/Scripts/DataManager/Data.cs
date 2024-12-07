@@ -9,4 +9,6 @@ public class Data
     public int currentCoin;
     public int currentRocketItem;
     public int currentRespawnItem;
+    public int rocketItemPrice = 10;
+    public int respawnItemPrice = 5;
 }

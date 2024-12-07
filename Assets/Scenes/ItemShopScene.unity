@@ -204,6 +204,8 @@ GameObject:
   - component: {fileID: 347124047}
   - component: {fileID: 347124046}
   - component: {fileID: 347124050}
+  - component: {fileID: 347124051}
+  - component: {fileID: 347124052}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -307,6 +309,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpController: {fileID: 0}
+--- !u!114 &347124051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347124045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fea79a35efcd3444b176244f68edd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinNumberText: {fileID: 2906000934485770013}
+  respawnItemNumberText: {fileID: 6913224465574873270}
+  respawnItemPriceText: {fileID: 8564155526071070742}
+  rocketItemNumberText: {fileID: 8365171885101564408}
+  rocketItemPriceText: {fileID: 5055512114447975723}
+--- !u!114 &347124052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347124045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be783903e4950746b934ad6c0b273fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980121126
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +430,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1673368704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673368705}
+  - component: {fileID: 1673368706}
+  m_Layer: 0
+  m_Name: ItemShopManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1673368705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673368704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 349.16846, y: 168.70706, z: 2.046588}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673368706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673368704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c6d3ca56ebc9944b76f3838aad385d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    highestDistance: 0
+    currentCoin: 0
+    currentRocketItem: 0
+    currentRespawnItem: 0
+    rocketItemPrice: 10
+    respawnItemPrice: 5
 --- !u!224 &71822690125039736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -930,7 +1012,7 @@ GameObject:
   - component: {fileID: 6966488863845086619}
   - component: {fileID: 7917527419158704109}
   m_Layer: 5
-  m_Name: List
+  m_Name: Rocket Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1469,7 @@ GameObject:
   - component: {fileID: 5112502057668728875}
   - component: {fileID: 4230035054358013284}
   m_Layer: 5
-  m_Name: List (1)
+  m_Name: Respawn Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1892,7 +1974,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 35
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 1.7
@@ -4371,7 +4453,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8743406692599766387}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347124052}
+        m_TargetAssemblyTypeName: ItemShopButtonController, Assembly-CSharp
+        m_MethodName: BuyRocketItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8748466662402192718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4445,7 +4539,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8748466662402192718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347124052}
+        m_TargetAssemblyTypeName: ItemShopButtonController, Assembly-CSharp
+        m_MethodName: BuyRespawnItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8783542073171780648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4630,3 +4736,4 @@ SceneRoots:
   - {fileID: 980121129}
   - {fileID: 347124049}
   - {fileID: 274772084}
+  - {fileID: 1673368705}
