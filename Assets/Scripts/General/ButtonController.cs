@@ -87,4 +87,9 @@ public class ButtonController : MonoBehaviour
         Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
         Sanimator.SetBool("OPopUp", false);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
