@@ -6,17 +6,31 @@ public class ItemShopButtonController : MonoBehaviour
 {
     public void BuyRespawnItem()
     {
-        ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.respawnItemPrice;
-        ItemShopController.Instance.data.currentRespawnItem += 1;
-        ItemShopController.Instance.SaveData();
-        UIShopController.Instance.UpdateTextAfterBuyRI();
+        if (ItemShopController.Instance.data.currentCoin >= ItemShopController.Instance.data.respawnItemPrice)
+        {
+            ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.respawnItemPrice;
+            ItemShopController.Instance.data.currentRespawnItem += 1;
+            ItemShopController.Instance.SaveData();
+            UIShopController.Instance.UpdateTextAfterBuyRI();
+        }
+        else
+        {
+            UIShopController.Instance.Notification();
+        }
     }
 
     public void BuyRocketItem()
     {
-        ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.rocketItemPrice;
-        ItemShopController.Instance.data.currentRocketItem += 1;
-        ItemShopController.Instance.SaveData();
-        UIShopController.Instance.UpdateTextAfterBuyROI();
+        if (ItemShopController.Instance.data.currentCoin >= ItemShopController.Instance.data.rocketItemPrice)
+        {
+            ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.rocketItemPrice;
+            ItemShopController.Instance.data.currentRocketItem += 1;
+            ItemShopController.Instance.SaveData();
+            UIShopController.Instance.UpdateTextAfterBuyROI();
+        }
+        else
+        {
+            UIShopController.Instance.Notification();
+        }
     }
 }

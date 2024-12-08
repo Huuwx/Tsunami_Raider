@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
         speed = 0;
         pSpawner.canSpawn = false;
         eSpawner.canSpawn = false;
-        gameManager.GameOver();
+        //gameManager.GameOver();
     }
 
     public void Respawn()

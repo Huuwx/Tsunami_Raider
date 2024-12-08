@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIController : MonoBehaviour
 {
@@ -50,5 +51,14 @@ public class UIController : MonoBehaviour
         gameOverPanel.SetActive(true);
         Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
         GOanimator.SetBool("PopUp", true);
+
+        if (gameManager.data.highestDistance < gameManager.distance)
+        {
+            gameManager.data.highestDistance = gameManager.distance;
+        }
+
+        gameManager.data.currentCoin += gameManager.coinCounter;
+
+        gameManager.SaveData();
     }
 }

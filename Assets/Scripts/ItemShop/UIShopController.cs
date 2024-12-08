@@ -14,6 +14,7 @@ public class UIShopController : MonoBehaviour
     [SerializeField] TextMeshProUGUI respawnItemPriceText;
     [SerializeField] TextMeshProUGUI rocketItemNumberText;
     [SerializeField] TextMeshProUGUI rocketItemPriceText;
+    [SerializeField] GameObject notification;
 
     void Start()
     {
@@ -36,5 +37,10 @@ public class UIShopController : MonoBehaviour
     {
         coinNumberText.text = ItemShopController.Instance.data.currentCoin.ToString();
         rocketItemNumberText.text = ItemShopController.Instance.data.currentRocketItem.ToString();
+    }
+
+    public void Notification()
+    {
+        notification.SetActive(true);
     }
 }
