@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PopUpController : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class PopUpController : MonoBehaviour
         else if (GameObject.Find("Popup_Quit") != null)
         {
             quitPopUp.SetActive(false);
+        }
+        else if (GameObject.Find("Popup"))
+        {
+            SceneManager.LoadScene("HomeScene");
         }
     }
 

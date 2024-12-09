@@ -45,6 +45,7 @@ public class ButtonController : MonoBehaviour
     public void HomeBtn()
     {
         SceneManager.LoadScene("HomeScene");
+        Time.timeScale = 1;
     }
 
     public void ItemShopBtn()
@@ -69,12 +70,6 @@ public class ButtonController : MonoBehaviour
         Sanimator.SetBool("OPopUp", true);
     }
 
-    public void CloseSettingPopUp()
-    {
-        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
-        Sanimator.SetBool("OPopUp", false);
-    }
-
     public void OpenQuitPopUp()
     {
         popUpController.OExitPopUp();
@@ -82,10 +77,15 @@ public class ButtonController : MonoBehaviour
         Sanimator.SetBool("OPopUp", true);
     }
 
-    public void CloseQuitPopUp()
+    public void ClosePopUp()
     {
-        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
-        Sanimator.SetBool("OPopUp", false);
+        Animator animator = GameObject.Find("Popup").GetComponent<Animator>();
+        animator.SetBool("OPopUp", false);
+    }
+
+    public void OpenAchievementScene()
+    {
+        SceneManager.LoadScene("AchievementScene");
     }
 
     public void ExitGame()
