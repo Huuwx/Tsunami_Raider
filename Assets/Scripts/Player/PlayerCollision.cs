@@ -15,6 +15,7 @@ public class PlayerCollision : MonoBehaviour
             if(collision.gameObject.CompareTag("Platform"))
             {
                 PlayerController.Instance.isGrounded = true;
+                Debug.Log("VA");
             }
         }
     }
@@ -53,6 +54,7 @@ public class PlayerCollision : MonoBehaviour
             if (collision.gameObject.CompareTag("Platform"))
             {
                 PlayerController.Instance.isGrounded = false;
+                Debug.Log("ROI");
             }
         }
     }
