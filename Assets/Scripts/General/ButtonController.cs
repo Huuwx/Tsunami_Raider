@@ -18,12 +18,14 @@ public class ButtonController : MonoBehaviour
 
     public void Pause()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         Time.timeScale = 0;
         UIController.Instance.SetActivePausePanel(true);
     }
 
     public void ReplayBtn()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         Time.timeScale = 1;
         if (GameObject.Find("GameOver Popup") != false)
         {
@@ -38,33 +40,39 @@ public class ButtonController : MonoBehaviour
 
     public void ContinueBtn()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         UIController.Instance.SetActivePausePanel(false);
         Time.timeScale = 1;
     }
 
     public void HomeBtn()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         SceneManager.LoadScene("HomeScene");
         Time.timeScale = 1;
     }
 
     public void ItemShopBtn()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         SceneManager.LoadScene("ItemShopScene");
     }
 
     public void LoadSceneReplay()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         SceneManager.LoadScene("SampleScene");
     }
 
     public void StartGame()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         SceneManager.LoadScene("SampleScene");
     }
 
     public void OpenSettingPopUp()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         popUpController.OSettingPopUp();
         Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
         Sanimator.SetBool("OPopUp", true);
@@ -72,6 +80,7 @@ public class ButtonController : MonoBehaviour
 
     public void OpenQuitPopUp()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         popUpController.OExitPopUp();
         Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
         Sanimator.SetBool("OPopUp", true);
@@ -79,17 +88,20 @@ public class ButtonController : MonoBehaviour
 
     public void ClosePopUp()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         Animator animator = GameObject.Find("Popup").GetComponent<Animator>();
         animator.SetBool("OPopUp", false);
     }
 
     public void OpenAchievementScene()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         SceneManager.LoadScene("AchievementScene");
     }
 
     public void ExitGame()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
         Application.Quit();
     }
 }

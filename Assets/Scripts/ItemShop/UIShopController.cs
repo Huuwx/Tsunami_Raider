@@ -20,23 +20,23 @@ public class UIShopController : MonoBehaviour
     {
         instance = this;
 
-        coinNumberText.text = ItemShopController.Instance.data.currentCoin.ToString();
-        respawnItemNumberText.text = ItemShopController.Instance.data.currentRespawnItem.ToString();
-        respawnItemPriceText.text = ItemShopController.Instance.data.respawnItemPrice.ToString();
-        rocketItemNumberText.text = ItemShopController.Instance.data.currentRocketItem.ToString();
-        rocketItemPriceText.text = ItemShopController.Instance.data.rocketItemPrice.ToString();
+        coinNumberText.text = GameManager.Instance.data.currentCoin.ToString();
+        respawnItemNumberText.text = GameManager.Instance.data.currentRespawnItem.ToString();
+        respawnItemPriceText.text = GameManager.Instance.data.respawnItemPrice.ToString();
+        rocketItemNumberText.text = GameManager.Instance.data.currentRocketItem.ToString();
+        rocketItemPriceText.text = GameManager.Instance.data.rocketItemPrice.ToString();
     }
 
     public void UpdateTextAfterBuyRI()
     {
-        coinNumberText.text = ItemShopController.Instance.data.currentCoin.ToString();
-        respawnItemNumberText.text = ItemShopController.Instance.data.currentRespawnItem.ToString();
+        coinNumberText.text = GameManager.Instance.data.currentCoin.ToString();
+        respawnItemNumberText.text = GameManager.Instance.data.currentRespawnItem.ToString();
     }
 
     public void UpdateTextAfterBuyROI()
     {
-        coinNumberText.text = ItemShopController.Instance.data.currentCoin.ToString();
-        rocketItemNumberText.text = ItemShopController.Instance.data.currentRocketItem.ToString();
+        coinNumberText.text = GameManager.Instance.data.currentCoin.ToString();
+        rocketItemNumberText.text = GameManager.Instance.data.currentRocketItem.ToString();
     }
 
     public void Notification()

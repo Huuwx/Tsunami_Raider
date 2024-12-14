@@ -10,8 +10,6 @@ public class UIController : MonoBehaviour
 
     public static UIController Instance { get { return instance; } }
 
-    [SerializeField] GameManager gameManager;
-
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI coinCounterText;
     [SerializeField] TextMeshProUGUI distanceTextGO;
@@ -31,10 +29,10 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int distance = Mathf.FloorToInt(gameManager.distance);
+        int distance = Mathf.FloorToInt(GameManager.Instance.distance);
         distanceText.text = distance + "m";
 
-        int coinCounter = gameManager.coinCounter;
+        int coinCounter = GameManager.Instance.coinCounter;
         coinCounterText.text = coinCounter + "";
     }
 
@@ -47,18 +45,18 @@ public class UIController : MonoBehaviour
     {
         distanceTextGO.text = distanceText.text;
         coinCounterTextGO.text = coinCounterText.text;
-        highestDistanceTextGO.text = Mathf.FloorToInt(gameManager.data.highestDistance) + "m";
+        highestDistanceTextGO.text = Mathf.FloorToInt(GameManager.Instance.data.highestDistance) + "m";
         gameOverPanel.SetActive(true);
         Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
         GOanimator.SetBool("PopUp", true);
 
-        if (gameManager.data.highestDistance < gameManager.distance)
+        if (GameManager.Instance.data.highestDistance < GameManager.Instance.distance)
         {
-            gameManager.data.highestDistance = gameManager.distance;
+            GameManager.Instance.data.highestDistance = GameManager.Instance.distance;
         }
 
-        gameManager.data.currentCoin += gameManager.coinCounter;
+        GameManager.Instance.data.currentCoin += GameManager.Instance.coinCounter;
 
-        gameManager.SaveData();
+        GameManager.Instance.SaveData();
     }
 }

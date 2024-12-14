@@ -6,11 +6,12 @@ public class ItemShopButtonController : MonoBehaviour
 {
     public void BuyRespawnItem()
     {
-        if (ItemShopController.Instance.data.currentCoin >= ItemShopController.Instance.data.respawnItemPrice)
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
+        if (GameManager.Instance.data.currentCoin >= GameManager.Instance.data.respawnItemPrice)
         {
-            ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.respawnItemPrice;
-            ItemShopController.Instance.data.currentRespawnItem += 1;
-            ItemShopController.Instance.SaveData();
+            GameManager.Instance.data.currentCoin -= GameManager.Instance.data.respawnItemPrice;
+            GameManager.Instance.data.currentRespawnItem += 1;
+            GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyRI();
         }
         else
@@ -21,11 +22,12 @@ public class ItemShopButtonController : MonoBehaviour
 
     public void BuyRocketItem()
     {
-        if (ItemShopController.Instance.data.currentCoin >= ItemShopController.Instance.data.rocketItemPrice)
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
+        if (GameManager.Instance.data.currentCoin >= GameManager.Instance.data.rocketItemPrice)
         {
-            ItemShopController.Instance.data.currentCoin -= ItemShopController.Instance.data.rocketItemPrice;
-            ItemShopController.Instance.data.currentRocketItem += 1;
-            ItemShopController.Instance.SaveData();
+            GameManager.Instance.data.currentCoin -= GameManager.Instance.data.rocketItemPrice;
+            GameManager.Instance.data.currentRocketItem += 1;
+            GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyROI();
         }
         else

@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class CoinController : MonoBehaviour
 {
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
 
     private Animator animator;
 
 
     private void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("DataManager").GetComponent<GameManager>();
         animator = GetComponent<Animator>();
     }
 
     public void SetTriggerCollecting()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.pickUpCoin);
         animator.SetTrigger("Collecting");
     }
 

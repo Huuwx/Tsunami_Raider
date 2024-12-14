@@ -33,6 +33,7 @@ public class ItemsController : MonoBehaviour
             gameObject.SetActive( false );
             if(isDead == true )
             {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.gameoverSound);
                 UIController.Instance.GameOver();
             }
         }
@@ -72,6 +73,7 @@ public class ItemsController : MonoBehaviour
 
             counter.text = "x" + GameManager.Instance.data.currentRocketItem;
 
+            SoundController.Instance.PlayOneShot(SoundController.Instance.rocket);
             PlayerController.Instance.isBoosted = true;
             pSpawner.canSpawn = false;
             eSpawner.canSpawn = false;
@@ -81,6 +83,7 @@ public class ItemsController : MonoBehaviour
 
     public IEnumerator CRespawn()
     {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.respawnSound);
         isDead = false;
         PlayerController.Instance.Respawn();
         yield return StartCoroutine(PlayerController.Instance.Undying());

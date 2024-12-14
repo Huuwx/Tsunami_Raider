@@ -14,8 +14,8 @@ public class PlayerCollision : MonoBehaviour
         {
             if(collision.gameObject.CompareTag("Platform"))
             {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.GroundFall);
                 PlayerController.Instance.isGrounded = true;
-                Debug.Log("VA");
             }
         }
     }
@@ -26,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.deadSound);
                 PlayerController.Instance.DieA();
 
                 ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
@@ -41,6 +42,7 @@ public class PlayerCollision : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("Ground"))
             {
+                SoundController.Instance.PlayOneShot(SoundController.Instance.waterFall);
                 particleController.PlayFallParticle();
                 particleController.PlayMovParticle();
             }
@@ -54,7 +56,6 @@ public class PlayerCollision : MonoBehaviour
             if (collision.gameObject.CompareTag("Platform"))
             {
                 PlayerController.Instance.isGrounded = false;
-                Debug.Log("ROI");
             }
         }
     }

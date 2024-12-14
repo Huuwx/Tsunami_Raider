@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private static PlayerController instance;
     public static PlayerController Instance { get { return instance; } }
 
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private ParticleController particleController;
     [SerializeField] private NitroController nitroController;
     [SerializeField] private PlatformSpawner pSpawner;
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 nitroController.RefillJumpTime();
             }
 
-            gameManager.GainedDistance(speed);
+            GameManager.Instance.GainedDistance(speed);
 
             if (isGrounded && !isBoosted && !isDead)
             {
@@ -110,7 +109,7 @@ public class PlayerController : MonoBehaviour
                 }
                 currentSpeed = speed;
             }
-            if (gameManager.distance >= 1500f)
+            if (GameManager.Instance.distance >= 1500f)
             {
                 isBoosted = false;
             }
@@ -166,6 +165,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            SoundController.Instance.PlayOneShot(SoundController.Instance.holdJump);
             particleController.PlayBNitro();
             particleController.PlayFNitro();
             isHoldingJump = true;
@@ -185,6 +185,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                SoundController.Instance.Stop();
                 particleController.StopBNitro();
                 particleController.StopFNitro();
                 isHoldingJump = false;
@@ -193,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
+            SoundController.Instance.Stop();
             particleController.StopBNitro();
             particleController.StopFNitro();
             isHoldingJump = false;
