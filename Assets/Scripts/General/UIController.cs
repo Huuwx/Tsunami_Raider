@@ -50,13 +50,15 @@ public class UIController : MonoBehaviour
         Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
         GOanimator.SetBool("PopUp", true);
 
-        if (GameManager.Instance.data.highestDistance < GameManager.Instance.distance)
-        {
-            GameManager.Instance.data.highestDistance = GameManager.Instance.distance;
-        }
+        //if (GameManager.Instance.data.highestDistance < GameManager.Instance.distance)
+        //{
+        //    GameManager.Instance.data.highestDistance = GameManager.Instance.distance;
+        //}
 
-        GameManager.Instance.data.currentCoin += GameManager.Instance.coinCounter;
+        //GameManager.Instance.data.currentCoin += GameManager.Instance.coinCounter;
 
-        GameManager.Instance.SaveData();
+        //GameManager.Instance.SaveData();
+
+        GameManager.Instance.GameOver();
     }
 }

@@ -59,9 +59,10 @@ public class GameManager : MonoBehaviour
         data.currentCoin += coinCounter;
 
         SaveData();
+    }
 
-        Debug.Log("Current Distance: " + Mathf.FloorToInt(distance));
-        Debug.Log("Highest Distance: " + Mathf.FloorToInt(data.highestDistance));
-        Debug.Log("Current Coin: " + Mathf.FloorToInt(data.currentCoin));
+    private void OnApplicationQuit()
+    {
+        GameManager.instance.SaveData();
     }
 }

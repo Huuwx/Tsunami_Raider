@@ -76,6 +76,7 @@ public class ButtonController : MonoBehaviour
         popUpController.OSettingPopUp();
         Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
         Sanimator.SetBool("OPopUp", true);
+        VolumeSetting.Instance.LoadSlider();
     }
 
     public void OpenQuitPopUp()

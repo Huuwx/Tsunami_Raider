@@ -6,57 +6,56 @@ using UnityEngine.UI;
 
 public class VolumeSetting : MonoBehaviour
 {
+    private static VolumeSetting instance;
+
+    public static VolumeSetting Instance { get { return instance; } }
+
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
+    [SerializeField] private Slider masterSlider;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolume") && PlayerPrefs.HasKey("SFXVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            //SetMusicVolume();
-            //SetSFXVolume();
+        instance = this;
+        LoadVolume();
+    }
 
-            myMixer.SetFloat("Music", Mathf.Log10(1) * 20);
-            myMixer.SetFloat("SFX", Mathf.Log10(1) * 20);
-
-            if (musicSlider != null && SFXSlider != null)
-            {
-                musicSlider.value = 1;
-                SFXSlider.value = 1;
-            }
-        }
+    public void SetMasterVolume()
+    {
+        float volume = masterSlider.value;
+        myMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        GameManager.Instance.data.masterVolume = volume;
     }
 
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;
         myMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("musicVolume", volume);
+        GameManager.Instance.data.musicVolume = volume;
     }
 
     public void SetSFXVolume()
     {
         float volume = SFXSlider.value;
         myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", volume);
+        GameManager.Instance.data.sfxVolume = volume;
     }
 
-    private void LoadVolume()
+    public void LoadVolume()
     {
-        if (musicSlider != null && SFXSlider != null)
-        {
-            musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-            SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        }
-        //SetMusicVolume();
-        //SetSFXVolume();
+        myMixer.SetFloat("Master", Mathf.Log10(GameManager.Instance.data.masterVolume) * 20);
+        myMixer.SetFloat("Music", Mathf.Log10(GameManager.Instance.data.musicVolume) * 20);
+        myMixer.SetFloat("SFX", Mathf.Log10(GameManager.Instance.data.sfxVolume) * 20);
+    }
 
-        myMixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume")) * 20);
-        myMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);
+    public void LoadSlider()
+    {
+        if (musicSlider != null && SFXSlider != null && masterSlider != null)
+        {
+            masterSlider.value = GameManager.Instance.data.masterVolume;
+            musicSlider.value = GameManager.Instance.data.musicVolume;
+            SFXSlider.value = GameManager.Instance.data.sfxVolume;
+        }
     }
 }
