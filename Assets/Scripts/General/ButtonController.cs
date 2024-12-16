@@ -48,26 +48,26 @@ public class ButtonController : MonoBehaviour
     public void HomeBtn()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        SceneManager.LoadScene("HomeScene");
+        LoadSceneController.Instance.LoadScene("HomeScene");
         Time.timeScale = 1;
     }
 
     public void ItemShopBtn()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        SceneManager.LoadScene("ItemShopScene");
+        LoadSceneController.Instance.LoadScene("ItemShopScene");
     }
 
     public void LoadSceneReplay()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        SceneManager.LoadScene("SampleScene");
+        LoadSceneController.Instance.LoadScene("SampleScene");
     }
 
     public void StartGame()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        SceneManager.LoadScene("SampleScene");
+        LoadSceneController.Instance.LoadScene("SampleScene");
     }
 
     public void OpenSettingPopUp()
@@ -97,7 +97,7 @@ public class ButtonController : MonoBehaviour
     public void OpenAchievementScene()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        SceneManager.LoadScene("AchievementScene");
+        LoadSceneController.Instance.LoadScene("AchievementScene");
     }
 
     public void ExitGame()

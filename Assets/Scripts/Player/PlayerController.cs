@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         instance = this;
         startPos = transform.position;
+        GameManager.Instance.coinCounter = 0;
+        GameManager.Instance.distance = 0;
     }
 
     // Update is called once per frame

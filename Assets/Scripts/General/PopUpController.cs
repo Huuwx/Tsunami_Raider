@@ -25,7 +25,7 @@ public class PopUpController : MonoBehaviour
         }
         else if (GameObject.Find("Popup"))
         {
-            SceneManager.LoadScene("HomeScene");
+            LoadSceneController.Instance.LoadScene("HomeScene");
         }
     }
 

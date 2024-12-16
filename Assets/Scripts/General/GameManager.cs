@@ -63,6 +63,6 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        GameManager.instance.SaveData();
+        SaveData();
     }
 }

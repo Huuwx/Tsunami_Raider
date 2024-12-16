@@ -51,6 +51,9 @@ public class VolumeSetting : MonoBehaviour
 
     public void LoadSlider()
     {
+        masterSlider = GameObject.Find("MasterSlider").GetComponent<Slider>();
+        musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
+        SFXSlider = GameObject.Find("SoundSlider").GetComponent<Slider>();
         if (musicSlider != null && SFXSlider != null && masterSlider != null)
         {
             masterSlider.value = GameManager.Instance.data.masterVolume;

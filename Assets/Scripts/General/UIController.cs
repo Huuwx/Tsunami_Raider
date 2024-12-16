@@ -24,10 +24,17 @@ public class UIController : MonoBehaviour
         instance = this;
         distanceText = GameObject.Find("Distance Text").GetComponent<TextMeshProUGUI>();
         coinCounterText = GameObject.Find("Coin Counter Text").GetComponent<TextMeshProUGUI>();
+        UpdateText();
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+        UpdateText();
+    }
+
+    private void UpdateText()
     {
         int distance = Mathf.FloorToInt(GameManager.Instance.distance);
         distanceText.text = distance + "m";
