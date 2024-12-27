@@ -31,7 +31,7 @@ public class PlayerCollision : MonoBehaviour
 
                 ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
                 respawnItem.SetActive(true);
-                itemsController.ChangeBtnState(GameManager.Instance.data.currentRespawnItem);
+                itemsController.ChangeBtnState(GameManager.Instance.data.getCurrentRespawnItem());
                 itemsController.isClicked = false;
                 itemsController.timeToUseItem = 0;
                 itemsController.isDead = true;

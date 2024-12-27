@@ -15,7 +15,7 @@ public class UIAchievementSceneController : MonoBehaviour
     {
         instance = this;
 
-        int maxDistance = Mathf.FloorToInt(GameManager.Instance.data.highestDistance);
+        int maxDistance = Mathf.FloorToInt(GameManager.Instance.data.getHighestDistance());
         maxDistanceAchivementText.text = maxDistance.ToString() + 'm';
     }
 }

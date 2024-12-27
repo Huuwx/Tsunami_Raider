@@ -22,7 +22,7 @@ public class ItemsController : MonoBehaviour
 
     private void Awake()
     {
-        ChangeBtnState(GameManager.Instance.data.currentRocketItem);
+        ChangeBtnState(GameManager.Instance.data.getCurrentRocketItem());
     }
 
     private void Update()
@@ -65,13 +65,15 @@ public class ItemsController : MonoBehaviour
 
     public void TriggerBoosted()
     {
-        if (GameManager.Instance.data.currentRocketItem > 0)
+        if (GameManager.Instance.data.getCurrentRocketItem() > 0)
         {
-            GameManager.Instance.data.currentRocketItem--;
+            int currentRocketItem = GameManager.Instance.data.getCurrentRocketItem();
+
+            GameManager.Instance.data.setCurrentRocketItem(currentRocketItem -= 1);
 
             GameManager.Instance.SaveData();
 
-            counter.text = "x" + GameManager.Instance.data.currentRocketItem;
+            counter.text = "x" + GameManager.Instance.data.getCurrentRocketItem();
 
             SoundController.Instance.PlayOneShot(SoundController.Instance.rocket);
             PlayerController.Instance.isBoosted = true;
@@ -92,13 +94,15 @@ public class ItemsController : MonoBehaviour
 
     public void Respawn()
     {
-        if (!isClicked && GameManager.Instance.data.currentRespawnItem > 0)
+        if (!isClicked && GameManager.Instance.data.getCurrentRespawnItem() > 0)
         {
-            GameManager.Instance.data.currentRespawnItem--;
+            int currentRespawnItem = GameManager.Instance.data.getCurrentRespawnItem();
+
+            GameManager.Instance.data.setCurrentRespawnItem(currentRespawnItem -= 1);
             
             GameManager.Instance.SaveData();
 
-            counter.text = "x" + GameManager.Instance.data.currentRespawnItem;
+            counter.text = "x" + GameManager.Instance.data.getCurrentRespawnItem();
             isClicked = true;
             StartCoroutine(CRespawn());
         }

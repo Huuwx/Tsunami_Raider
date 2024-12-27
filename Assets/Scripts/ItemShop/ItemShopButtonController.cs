@@ -7,10 +7,13 @@ public class ItemShopButtonController : MonoBehaviour
     public void BuyRespawnItem()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.currentCoin >= GameManager.Instance.data.respawnItemPrice)
+        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getRespawnItemPrice())
         {
-            GameManager.Instance.data.currentCoin -= GameManager.Instance.data.respawnItemPrice;
-            GameManager.Instance.data.currentRespawnItem += 1;
+            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            int currentRespawnItem = GameManager.Instance.data.getCurrentRespawnItem();
+
+            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getRespawnItemPrice());
+            GameManager.Instance.data.setCurrentRespawnItem(currentRespawnItem += 1);
             GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyRI();
         }
@@ -23,10 +26,14 @@ public class ItemShopButtonController : MonoBehaviour
     public void BuyRocketItem()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.currentCoin >= GameManager.Instance.data.rocketItemPrice)
+        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getRocketItemPrice())
         {
-            GameManager.Instance.data.currentCoin -= GameManager.Instance.data.rocketItemPrice;
-            GameManager.Instance.data.currentRocketItem += 1;
+            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            int currentRocketItem = GameManager.Instance.data.getCurrentRocketItem();
+
+
+            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getRocketItemPrice());
+            GameManager.Instance.data.setCurrentRocketItem(currentRocketItem += 1);
             GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyROI();
         }

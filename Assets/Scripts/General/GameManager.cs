@@ -51,12 +51,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (data.highestDistance < distance)
+        if (data.getHighestDistance() < distance)
         {
-            data.highestDistance = distance;
+            data.setHighestDistance(distance);
         }
 
-        data.currentCoin += coinCounter;
+        int currentCoin = data.getCurrentCoin();
+
+        data.setCurrentCoin(currentCoin += coinCounter);
 
         SaveData();
     }

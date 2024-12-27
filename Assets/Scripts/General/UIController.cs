@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour
     {
         distanceTextGO.text = distanceText.text;
         coinCounterTextGO.text = coinCounterText.text;
-        highestDistanceTextGO.text = Mathf.FloorToInt(GameManager.Instance.data.highestDistance) + "m";
+        highestDistanceTextGO.text = Mathf.FloorToInt(GameManager.Instance.data.getHighestDistance()) + "m";
         gameOverPanel.SetActive(true);
         Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
         GOanimator.SetBool("PopUp", true);

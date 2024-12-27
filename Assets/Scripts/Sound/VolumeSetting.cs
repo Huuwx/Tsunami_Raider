@@ -25,28 +25,28 @@ public class VolumeSetting : MonoBehaviour
     {
         float volume = masterSlider.value;
         myMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
-        GameManager.Instance.data.masterVolume = volume;
+        GameManager.Instance.data.setMasterVolume( volume);
     }
 
     public void SetMusicVolume()
     {
         float volume = musicSlider.value;
         myMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
-        GameManager.Instance.data.musicVolume = volume;
+        GameManager.Instance.data.setMusicVolume( volume);
     }
 
     public void SetSFXVolume()
     {
         float volume = SFXSlider.value;
         myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
-        GameManager.Instance.data.sfxVolume = volume;
+        GameManager.Instance.data.setSFXVolume( volume);
     }
 
     public void LoadVolume()
     {
-        myMixer.SetFloat("Master", Mathf.Log10(GameManager.Instance.data.masterVolume) * 20);
-        myMixer.SetFloat("Music", Mathf.Log10(GameManager.Instance.data.musicVolume) * 20);
-        myMixer.SetFloat("SFX", Mathf.Log10(GameManager.Instance.data.sfxVolume) * 20);
+        myMixer.SetFloat("Master", Mathf.Log10(GameManager.Instance.data.getmasterVolume()) * 20);
+        myMixer.SetFloat("Music", Mathf.Log10(GameManager.Instance.data.getmusicVolume()) * 20);
+        myMixer.SetFloat("SFX", Mathf.Log10(GameManager.Instance.data.getsfxVolume()) * 20);
     }
 
     public void LoadSlider()
@@ -56,9 +56,9 @@ public class VolumeSetting : MonoBehaviour
         SFXSlider = GameObject.Find("SoundSlider").GetComponent<Slider>();
         if (musicSlider != null && SFXSlider != null && masterSlider != null)
         {
-            masterSlider.value = GameManager.Instance.data.masterVolume;
-            musicSlider.value = GameManager.Instance.data.musicVolume;
-            SFXSlider.value = GameManager.Instance.data.sfxVolume;
+            masterSlider.value = GameManager.Instance.data.getmasterVolume();
+            musicSlider.value = GameManager.Instance.data.getmusicVolume();
+            SFXSlider.value = GameManager.Instance.data.getsfxVolume();
         }
     }
 }
