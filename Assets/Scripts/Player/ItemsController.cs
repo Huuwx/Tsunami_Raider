@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class ItemsController : MonoBehaviour
 {
+    private static ItemsController instance;
+
+    public static ItemsController Instance { get { return instance; } }
+
     [SerializeField] PlatformSpawner pSpawner;
     [SerializeField] EnemySpawner eSpawner;
 
-    [SerializeField] Button targetBtn;
-    [SerializeField] Color disabledColor;
-    [SerializeField] Color normalColor;
+    [SerializeField] private GameObject respawnItem;
+    [SerializeField] private GameObject rocketItem;
 
     public TextMeshProUGUI counter;
 
@@ -22,7 +25,7 @@ public class ItemsController : MonoBehaviour
 
     private void Awake()
     {
-        ChangeBtnState(GameManager.Instance.data.getCurrentRocketItem());
+        instance = this;
     }
 
     private void Update()
@@ -30,37 +33,14 @@ public class ItemsController : MonoBehaviour
         timeToUseItem += Time.deltaTime;
         if(timeToUseItem > 5f )
         {
-            gameObject.SetActive( false );
+            rocketItem.SetActive( false );
+            respawnItem.SetActive( false );
             if(isDead == true )
             {
                 SoundController.Instance.PlayOneShot(SoundController.Instance.gameoverSound);
                 UIController.Instance.GameOver();
             }
         }
-    }
-
-    public void ChangeBtnState(int currentCount)
-    {
-        counter.text = "x" + currentCount;
-        if (currentCount == 0)
-        {
-            ChangeButtonColor(false, disabledColor);
-        }
-        else
-        {
-            ChangeButtonColor(true, normalColor);
-        }
-    }
-
-    private void ChangeButtonColor(bool isInteractable, Color targetColor)
-    {
-        ColorBlock cb = targetBtn.colors;
-
-        cb.disabledColor = targetColor;
-
-        targetBtn.colors = cb;
-
-        targetBtn.interactable = isInteractable;
     }
 
     public void TriggerBoosted()
@@ -73,13 +53,15 @@ public class ItemsController : MonoBehaviour
 
             GameManager.Instance.SaveData();
 
-            counter.text = "x" + GameManager.Instance.data.getCurrentRocketItem();
+            UseItemBtnController useItemBtnController = rocketItem.GetComponent<UseItemBtnController>();
+
+            useItemBtnController.counter.text = "x" + GameManager.Instance.data.getCurrentRocketItem();
 
             SoundController.Instance.PlayOneShot(SoundController.Instance.rocket);
             PlayerController.Instance.isBoosted = true;
             pSpawner.canSpawn = false;
             eSpawner.canSpawn = false;
-            gameObject.SetActive(false);
+            rocketItem.SetActive(false);
         }
     }
 
@@ -89,7 +71,7 @@ public class ItemsController : MonoBehaviour
         isDead = false;
         PlayerController.Instance.Respawn();
         yield return StartCoroutine(PlayerController.Instance.Undying());
-        gameObject.SetActive(false);
+        respawnItem.SetActive(false );
     }
 
     public void Respawn()
@@ -102,7 +84,9 @@ public class ItemsController : MonoBehaviour
             
             GameManager.Instance.SaveData();
 
-            counter.text = "x" + GameManager.Instance.data.getCurrentRespawnItem();
+            UseItemBtnController useItemBtnController = respawnItem.GetComponent<UseItemBtnController>();
+
+            useItemBtnController.counter.text = "x" + GameManager.Instance.data.getCurrentRespawnItem();
             isClicked = true;
             StartCoroutine(CRespawn());
         }

@@ -26,6 +26,7 @@ public class VolumeSetting : MonoBehaviour
         float volume = masterSlider.value;
         myMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
         GameManager.Instance.data.setMasterVolume( volume);
+        GameManager.Instance.SaveData();
     }
 
     public void SetMusicVolume()
@@ -33,6 +34,7 @@ public class VolumeSetting : MonoBehaviour
         float volume = musicSlider.value;
         myMixer.SetFloat("Music", Mathf.Log10(volume) * 20);
         GameManager.Instance.data.setMusicVolume( volume);
+        GameManager.Instance.SaveData();
     }
 
     public void SetSFXVolume()
@@ -40,6 +42,7 @@ public class VolumeSetting : MonoBehaviour
         float volume = SFXSlider.value;
         myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         GameManager.Instance.data.setSFXVolume( volume);
+        GameManager.Instance.SaveData();
     }
 
     public void LoadVolume()

@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
         startPos = transform.position;
         GameManager.Instance.coinCounter = 0;
         GameManager.Instance.distance = 0;
+        GameManager.Instance.gameOver = false;
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int obstacleLayer = LayerMask.NameToLayer("Obstacle");
+        Physics2D.IgnoreLayerCollision(playerLayer, obstacleLayer, false);
     }
 
     // Update is called once per frame

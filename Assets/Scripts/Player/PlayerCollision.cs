@@ -29,12 +29,12 @@ public class PlayerCollision : MonoBehaviour
                 SoundController.Instance.PlayOneShot(SoundController.Instance.deadSound);
                 PlayerController.Instance.DieA();
 
-                ItemsController itemsController = respawnItem.GetComponent<ItemsController>();
+                UseItemBtnController useItemBtnController = respawnItem.GetComponent<UseItemBtnController>();
                 respawnItem.SetActive(true);
-                itemsController.ChangeBtnState(GameManager.Instance.data.getCurrentRespawnItem());
-                itemsController.isClicked = false;
-                itemsController.timeToUseItem = 0;
-                itemsController.isDead = true;
+                useItemBtnController.ChangeBtnState(GameManager.Instance.data.getCurrentRespawnItem());
+                ItemsController.Instance.isClicked = false;
+                ItemsController.Instance.timeToUseItem = 0;
+                ItemsController.Instance.isDead = true;
             }
             if (collision.gameObject.CompareTag("Coin"))
             {

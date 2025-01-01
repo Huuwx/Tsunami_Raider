@@ -14,8 +14,8 @@ public class ItemShopButtonController : MonoBehaviour
 
             GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getRespawnItemPrice());
             GameManager.Instance.data.setCurrentRespawnItem(currentRespawnItem += 1);
-            GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyRI();
+            GameManager.Instance.SaveData();
         }
         else
         {
@@ -34,8 +34,8 @@ public class ItemShopButtonController : MonoBehaviour
 
             GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getRocketItemPrice());
             GameManager.Instance.data.setCurrentRocketItem(currentRocketItem += 1);
-            GameManager.Instance.SaveData();
             UIShopController.Instance.UpdateTextAfterBuyROI();
+            GameManager.Instance.SaveData();
         }
         else
         {

@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get { return instance; } }
 
-    public float distance;
+    public float distance = 0;
     public int coinCounter = 0;
+    public bool gameOver = false;
+    
 
     public Data data;
 
@@ -33,8 +35,9 @@ public class GameManager : MonoBehaviour
             data = new Data();
         }
 
-        coinCounter = 0;
-        distance = 0;
+        //coinCounter = 0;
+        //distance = 0;
+        //gameOver = false;
     }
 
     public void SaveData()
@@ -56,11 +59,18 @@ public class GameManager : MonoBehaviour
             data.setHighestDistance(distance);
         }
 
-        int currentCoin = data.getCurrentCoin();
+        if (!gameOver)
+        {
+            gameOver = true;
+            Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
+            GOanimator.SetBool("PopUp", true);
 
-        data.setCurrentCoin(currentCoin += coinCounter);
+            int currentCoin = data.getCurrentCoin();
 
-        SaveData();
+            data.setCurrentCoin(currentCoin += coinCounter);
+
+            SaveData();
+        }
     }
 
     private void OnApplicationQuit()
