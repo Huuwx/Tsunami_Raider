@@ -81,7 +81,7 @@ public class ItemsController : MonoBehaviour
             int currentRespawnItem = GameManager.Instance.data.getCurrentRespawnItem();
 
             GameManager.Instance.data.setCurrentRespawnItem(currentRespawnItem -= 1);
-            
+
             GameManager.Instance.SaveData();
 
             UseItemBtnController useItemBtnController = respawnItem.GetComponent<UseItemBtnController>();

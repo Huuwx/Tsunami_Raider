@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AchievementScene.unity
     guid: 791f2556a62210e41b4d4377a9ae40f7
+  - enabled: 1
+    path: Assets/Scenes/Ship&CharacterShopScene.unity
+    guid: 61929d878450f73448d0a56aeb57a1f8
   m_configObjects: {}

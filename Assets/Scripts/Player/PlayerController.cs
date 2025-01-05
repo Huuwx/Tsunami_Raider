@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
 
     private Animator animator;
+    private SpriteRenderer charSpriteRenderer;
+    private SpriteRenderer shipSpriteRenderer;
 
     [SerializeField] float jumpForce;
     public float currentSpeed;
@@ -42,6 +44,16 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        charSpriteRenderer = GetComponent<SpriteRenderer>();
+        shipSpriteRenderer = GameObject.Find("Ship").GetComponent<SpriteRenderer>();
+        if (GameManager.Instance.data.getCharSprite() != null)
+        {
+            charSpriteRenderer.sprite = GameManager.Instance.data.getCharSprite();
+        }
+        if (GameManager.Instance.data.getShipSprite() != null)
+        {
+            shipSpriteRenderer.sprite = GameManager.Instance.data.getShipSprite();
+        }
     }
 
     // Start is called before the first frame update

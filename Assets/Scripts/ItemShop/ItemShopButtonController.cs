@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemShopButtonController : MonoBehaviour
 {
@@ -46,128 +47,208 @@ public class ItemShopButtonController : MonoBehaviour
     public void BuyChar1()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar1Price())
+        if (!GameManager.Instance.data.getHaveChar1())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar1Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar1Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar1Price());
+                GameManager.Instance.data.setHaveChar1(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite character = GameObject.Find("Icon_Char1").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setCharSprite(character);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyChar2()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar2Price())
+        if (!GameManager.Instance.data.getHaveChar2())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar2Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar2Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar2Price());
+                GameManager.Instance.data.setHaveChar2(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite character = GameObject.Find("Icon_Char2").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setCharSprite(character);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyChar3()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar3Price())
+        if (!GameManager.Instance.data.getHaveChar3())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar3Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar3Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar3Price());
+                GameManager.Instance.data.setHaveChar3(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite character = GameObject.Find("Icon_Char3").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setCharSprite(character);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyChar4()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar4Price())
+        if (!GameManager.Instance.data.getHaveChar4())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getChar4Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar4Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar4Price());
+                GameManager.Instance.data.setHaveChar4(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite character = GameObject.Find("Icon_Char4").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setCharSprite(character);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyShip1()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip1Price())
+        if (!GameManager.Instance.data.getHaveShip1())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip1Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip1Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip1Price());
+                GameManager.Instance.data.setHaveShip1(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite ship = GameObject.Find("Icon_Ship1").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setShipSprite(ship);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyShip2()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip2Price())
+        if (!GameManager.Instance.data.getHaveShip2())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip2Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip2Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip2Price());
+                GameManager.Instance.data.setHaveShip2(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite ship = GameObject.Find("Icon_Ship2").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setShipSprite(ship);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyShip3()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip3Price())
+        if (!GameManager.Instance.data.getHaveShip3())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip3Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip3Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip3Price());
+                GameManager.Instance.data.setHaveShip3(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite ship = GameObject.Find("Icon_Ship3").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setShipSprite(ship);
+            GameManager.Instance.SaveData();
         }
     }
 
     public void BuyShip4()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip4Price())
+        if (!GameManager.Instance.data.getHaveShip4())
         {
-            int currentCoin = GameManager.Instance.data.getCurrentCoin();
+            if (GameManager.Instance.data.getCurrentCoin() >= GameManager.Instance.data.getShip4Price())
+            {
+                int currentCoin = GameManager.Instance.data.getCurrentCoin();
 
-            GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip4Price());
-            GameManager.Instance.SaveData();
+                GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip4Price());
+                GameManager.Instance.data.setHaveShip3(true);
+                GameManager.Instance.SaveData();
+            }
+            else
+            {
+                UICSShopController.Instance.Notification();
+            }
         }
         else
         {
-            UIShopController.Instance.Notification();
+            Sprite ship = GameObject.Find("Icon_Ship4").GetComponent<Image>().sprite;
+            GameManager.Instance.data.setShipSprite(ship);
+            GameManager.Instance.SaveData();
         }
     }
 }

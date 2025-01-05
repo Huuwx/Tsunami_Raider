@@ -58,6 +58,12 @@ public class ButtonController : MonoBehaviour
         LoadSceneController.Instance.LoadScene("ItemShopScene");
     }
 
+    public void ShopSCScene()
+    {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
+        LoadSceneController.Instance.LoadScene("Ship&CharacterShopScene");
+    }
+
     public void LoadSceneReplay()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
