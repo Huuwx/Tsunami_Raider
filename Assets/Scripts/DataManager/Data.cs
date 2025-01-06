@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -22,8 +23,10 @@ public class Data
     [SerializeField] private float sfxVolume = 1.0f;
     [SerializeField] private float musicVolume = 1.0f;
     [SerializeField] private float masterVolume = 1.0f;
-    [SerializeField] private Sprite character;
-    [SerializeField] private Sprite ship;
+    [SerializeField] private string characterName;
+    [SerializeField] private string shipName;
+    //[SerializeField] private Sprite character;
+    //[SerializeField] private Sprite ship;
     [SerializeField] private bool haveChar1 = false;
     [SerializeField] private bool haveChar2 = false;
     [SerializeField] private bool haveChar3 = false;
@@ -50,8 +53,8 @@ public class Data
     public float getsfxVolume() {  return sfxVolume;}
     public float getmusicVolume() {  return musicVolume;}
     public float getmasterVolume() {  return masterVolume;}
-    public Sprite getCharSprite() { return character; }
-    public Sprite getShipSprite() { return ship; }
+    public Sprite getCharSprite() { return Resources.Load<Sprite>($"Characters/{characterName}"); }
+    public Sprite getShipSprite() { return Resources.Load<Sprite>($"Ships/{shipName}"); }
     public bool getHaveChar1() { return haveChar1; }
     public bool getHaveChar2() {  return haveChar2; }
     public bool getHaveChar3() {  return haveChar3; }
@@ -68,8 +71,8 @@ public class Data
     public void setSFXVolume(float sfxVolume) {  this.sfxVolume = sfxVolume; }
     public void setMusicVolume(float musicVolume) {  this.musicVolume = musicVolume; }
     public void setMasterVolume(float masterVolume) {  this.masterVolume = masterVolume; }
-    public void setCharSprite(Sprite character) { this.character = character; }
-    public void setShipSprite(Sprite ship) {  this.ship = ship; }
+    public void setCharSprite(string characterName) { this.characterName = characterName; }
+    public void setShipSprite(string shipName) {  this.shipName = shipName; }
     public void setHaveChar1(bool haveChar1) {  this.haveChar1 = haveChar1; }
     public void setHaveChar2(bool haveChar2) {  this.haveChar2 = haveChar2; }
     public void setHaveChar3(bool haveChar3) {  this.haveChar3 = haveChar3; }

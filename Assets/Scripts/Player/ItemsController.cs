@@ -53,6 +53,8 @@ public class ItemsController : MonoBehaviour
 
             GameManager.Instance.SaveData();
 
+            Debug.Log(GameManager.Instance.data.getCurrentRocketItem());
+
             UseItemBtnController useItemBtnController = rocketItem.GetComponent<UseItemBtnController>();
 
             useItemBtnController.counter.text = "x" + GameManager.Instance.data.getCurrentRocketItem();
@@ -83,6 +85,8 @@ public class ItemsController : MonoBehaviour
             GameManager.Instance.data.setCurrentRespawnItem(currentRespawnItem -= 1);
 
             GameManager.Instance.SaveData();
+
+            Debug.Log(GameManager.Instance.data.getCurrentRespawnItem());
 
             UseItemBtnController useItemBtnController = respawnItem.GetComponent<UseItemBtnController>();
 

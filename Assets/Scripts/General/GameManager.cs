@@ -25,15 +25,7 @@ public class GameManager : MonoBehaviour
 
         //SaveData();
 
-        string loadedData = SaveSystem.Load("save");
-        if(loadedData != null)
-        {
-            data = JsonUtility.FromJson<Data>(loadedData);
-        }
-        else
-        {
-            data = new Data();
-        }
+        LoadData();
 
         //coinCounter = 0;
         //distance = 0;
@@ -45,6 +37,19 @@ public class GameManager : MonoBehaviour
         string saveString = JsonUtility.ToJson(data);
 
         SaveSystem.Save("save", saveString);
+    }
+
+    public void LoadData()
+    {
+        string loadedData = SaveSystem.Load("save");
+        if (loadedData != null)
+        {
+            data = JsonUtility.FromJson<Data>(loadedData);
+        }
+        else
+        {
+            data = new Data();
+        }
     }
 
     public void GainedDistance(float speed)
