@@ -962,69 +962,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b141636ecb7a3747bb5b6f24d1e93bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listCharsText:
-  - {fileID: 5526555}
-  - {fileID: 901589130}
-  - {fileID: 2780096880578220307}
-  - {fileID: 8918953665416682421}
-  - {fileID: 5817557058131816453}
-  - {fileID: 8918953664865541344}
-  - {fileID: 2182087733537178937}
-  - {fileID: 8918953666455016601}
-  - {fileID: 2327186034083298332}
-  - {fileID: 8918953666939242394}
-  listCharsBtn:
-  - {fileID: 13585557}
-  - {fileID: 8918953666046995112}
-  - {fileID: 8918953665782887776}
-  - {fileID: 8918953665661942056}
-  - {fileID: 8918953665969041352}
-  listShipsText:
-  - {fileID: 1239721068}
-  - {fileID: 902979799}
-  - {fileID: 7132965378264479488}
-  - {fileID: 8918953666380773650}
-  - {fileID: 4635001866615794678}
-  - {fileID: 8918953666765468388}
-  - {fileID: 8763495205786554221}
-  - {fileID: 8918953666828136063}
-  - {fileID: 1839827723}
-  - {fileID: 1163639365}
-  listShipsBtn:
-  - {fileID: 767619562}
-  - {fileID: 8918953666719865694}
-  - {fileID: 8918953665493704552}
-  - {fileID: 8918953664869695079}
-  - {fileID: 366568079}
+  characterItems:
+  - button: {fileID: 13585557}
+    itemText: {fileID: 901589130}
+    itemTextBack: {fileID: 5526555}
+    priceText: {fileID: 98216624}
+    iconName: Icon_Char
+  - button: {fileID: 8918953666046995112}
+    itemText: {fileID: 8918953665416682421}
+    itemTextBack: {fileID: 2780096880578220307}
+    priceText: {fileID: 8918953665821347177}
+    iconName: Icon_Char1
+  - button: {fileID: 8918953665782887776}
+    itemText: {fileID: 8918953664865541344}
+    itemTextBack: {fileID: 5817557058131816453}
+    priceText: {fileID: 8918953665902831744}
+    iconName: Icon_Char2
+  - button: {fileID: 8918953665661942056}
+    itemText: {fileID: 8918953666455016601}
+    itemTextBack: {fileID: 2182087733537178937}
+    priceText: {fileID: 8918953666357939774}
+    iconName: Icon_Char3
+  - button: {fileID: 8918953665969041352}
+    itemText: {fileID: 8918953666939242394}
+    itemTextBack: {fileID: 2327186034083298332}
+    priceText: {fileID: 8918953665777582392}
+    iconName: Icon_Char4
+  shipItems:
+  - button: {fileID: 767619562}
+    itemText: {fileID: 902979799}
+    itemTextBack: {fileID: 1239721068}
+    priceText: {fileID: 1452974160}
+    iconName: Icon_Ship
+  - button: {fileID: 8918953666719865694}
+    itemText: {fileID: 8918953666380773650}
+    itemTextBack: {fileID: 7132965378264479488}
+    priceText: {fileID: 8918953666670090379}
+    iconName: Icon_Ship1
+  - button: {fileID: 8918953665493704552}
+    itemText: {fileID: 8918953666765468388}
+    itemTextBack: {fileID: 4635001866615794678}
+    priceText: {fileID: 8918953665107435082}
+    iconName: Icon_Ship2
+  - button: {fileID: 8918953664869695079}
+    itemText: {fileID: 8918953666828136063}
+    itemTextBack: {fileID: 8763495205786554221}
+    priceText: {fileID: 8918953665470438689}
+    iconName: Icon_Ship3
+  - button: {fileID: 366568079}
+    itemText: {fileID: 1163639365}
+    itemTextBack: {fileID: 1839827723}
+    priceText: {fileID: 1102113054}
+    iconName: Icon_Ship4
   coinNumberText: {fileID: 3650718429612302916}
-  char_ItemText: {fileID: 901589130}
-  char_ItemTextBack: {fileID: 5526555}
-  char_1_ItemPriceText: {fileID: 8918953665821347177}
-  char_1_ItemText: {fileID: 8918953665416682421}
-  char_1_ItemTextBack: {fileID: 2780096880578220307}
-  char_2_ItemPriceText: {fileID: 8918953665902831744}
-  char_2_ItemText: {fileID: 8918953664865541344}
-  char_2_ItemTextBack: {fileID: 5817557058131816453}
-  char_3_ItemPriceText: {fileID: 8918953666357939774}
-  char_3_ItemText: {fileID: 8918953666455016601}
-  char_3_ItemTextBack: {fileID: 2182087733537178937}
-  char_4_ItemPriceText: {fileID: 8918953665777582392}
-  char_4_ItemText: {fileID: 8918953666939242394}
-  char_4_ItemTextBack: {fileID: 2327186034083298332}
-  ship_ItemText: {fileID: 902979799}
-  ship_ItemTextBack: {fileID: 1239721068}
-  ship_1_ItemPriceText: {fileID: 8918953666670090379}
-  ship_1_ItemText: {fileID: 8918953666380773650}
-  ship_1_ItemTextBack: {fileID: 7132965378264479488}
-  ship_2_ItemPriceText: {fileID: 8918953665107435082}
-  ship_2_ItemText: {fileID: 8918953666765468388}
-  ship_2_ItemTextBack: {fileID: 4635001866615794678}
-  ship_3_ItemPriceText: {fileID: 8918953665470438689}
-  ship_3_ItemText: {fileID: 8918953666828136063}
-  ship_3_ItemTextBack: {fileID: 8763495205786554221}
-  ship_4_ItemPriceText: {fileID: 1102113054}
-  ship_4_ItemText: {fileID: 1163639365}
-  ship_4_ItemTextBack: {fileID: 1839827723}
   notification: {fileID: 1640062680}
 --- !u!114 &520923132
 MonoBehaviour:

@@ -51,9 +51,8 @@ public class ItemShopButtonController : MonoBehaviour
         Sprite character = GameObject.Find("Icon_Char").GetComponent<Image>().sprite;
         GameManager.Instance.data.setCharSprite(character.name);
         GameManager.Instance.SaveData();
-        UICSShopController.Instance.SetUseAllCharTxt();
-        UICSShopController.Instance.SetUseAllCharBtn();
-        UICSShopController.Instance.UsedCharBtn();
+        UICSShopController.Instance.SetUseAllCharacters();
+        UICSShopController.Instance.SetUsedCharacter();
     }
 
     public void BuyChar1()
@@ -68,7 +67,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar1Price());
                 GameManager.Instance.data.setHaveChar1(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseChar1Btn();
+                UICSShopController.Instance.SetUseAllCharacters();
+                UICSShopController.Instance.SetUsedCharacter();
             }
             else
             {
@@ -80,9 +80,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite character = GameObject.Find("Icon_Char1").GetComponent<Image>().sprite;
             GameManager.Instance.data.setCharSprite(character.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllCharTxt();
-            UICSShopController.Instance.SetUseAllCharBtn();
-            UICSShopController.Instance.UsedChar1Btn();
+            UICSShopController.Instance.SetUseAllCharacters();
+            UICSShopController.Instance.SetUsedCharacter();
         }
     }
 
@@ -98,7 +97,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar2Price());
                 GameManager.Instance.data.setHaveChar2(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseChar2Btn();
+                UICSShopController.Instance.SetUseAllCharacters();
+                UICSShopController.Instance.SetUsedCharacter();
             }
             else
             {
@@ -110,9 +110,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite character = GameObject.Find("Icon_Char2").GetComponent<Image>().sprite;
             GameManager.Instance.data.setCharSprite(character.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllCharTxt();
-            UICSShopController.Instance.SetUseAllCharBtn();
-            UICSShopController.Instance.UsedChar2Btn();
+            UICSShopController.Instance.SetUseAllCharacters();
+            UICSShopController.Instance.SetUsedCharacter();
         }
     }
 
@@ -128,7 +127,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar3Price());
                 GameManager.Instance.data.setHaveChar3(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseChar3Btn();
+                UICSShopController.Instance.SetUseAllCharacters();
+                UICSShopController.Instance.SetUsedCharacter();
             }
             else
             {
@@ -140,9 +140,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite character = GameObject.Find("Icon_Char3").GetComponent<Image>().sprite;
             GameManager.Instance.data.setCharSprite(character.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllCharTxt();
-            UICSShopController.Instance.SetUseAllCharBtn();
-            UICSShopController.Instance.UsedChar3Btn();
+            UICSShopController.Instance.SetUseAllCharacters();
+            UICSShopController.Instance.SetUsedCharacter();
         }
     }
 
@@ -158,7 +157,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getChar4Price());
                 GameManager.Instance.data.setHaveChar4(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseChar4Btn();
+                UICSShopController.Instance.SetUseAllCharacters();
+                UICSShopController.Instance.SetUsedCharacter();
             }
             else
             {
@@ -170,9 +170,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite character = GameObject.Find("Icon_Char4").GetComponent<Image>().sprite;
             GameManager.Instance.data.setCharSprite(character.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllCharTxt();
-            UICSShopController.Instance.SetUseAllCharBtn();
-            UICSShopController.Instance.UsedChar4Btn();
+            UICSShopController.Instance.SetUseAllCharacters();
+            UICSShopController.Instance.SetUsedCharacter();
         }
     }
 
@@ -182,9 +181,8 @@ public class ItemShopButtonController : MonoBehaviour
         Sprite ship = GameObject.Find("Icon_Ship").GetComponent<Image>().sprite;
         GameManager.Instance.data.setShipSprite(ship.name);
         GameManager.Instance.SaveData();
-        UICSShopController.Instance.SetUseAllShipTxt();
-        UICSShopController.Instance.SetUseAllShipBtn();
-        UICSShopController.Instance.UsedShipBtn();
+        UICSShopController.Instance.SetUseAllShips();
+        UICSShopController.Instance.SetUsedShip();
     }
 
     public void BuyShip1()
@@ -199,7 +197,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip1Price());
                 GameManager.Instance.data.setHaveShip1(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseShip1Btn();
+                UICSShopController.Instance.SetUseAllShips();
+                UICSShopController.Instance.SetUsedShip();
             }
             else
             {
@@ -211,9 +210,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite ship = GameObject.Find("Icon_Ship1").GetComponent<Image>().sprite;
             GameManager.Instance.data.setShipSprite(ship.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllShipTxt();
-            UICSShopController.Instance.SetUseAllShipBtn();
-            UICSShopController.Instance.UsedShip1Btn();
+            UICSShopController.Instance.SetUseAllShips();
+            UICSShopController.Instance.SetUsedShip();
         }
     }
 
@@ -229,7 +227,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip2Price());
                 GameManager.Instance.data.setHaveShip2(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseShip2Btn();
+                UICSShopController.Instance.SetUseAllShips();
+                UICSShopController.Instance.SetUsedShip();
             }
             else
             {
@@ -241,9 +240,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite ship = GameObject.Find("Icon_Ship2").GetComponent<Image>().sprite;
             GameManager.Instance.data.setShipSprite(ship.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllShipTxt();
-            UICSShopController.Instance.SetUseAllShipBtn();
-            UICSShopController.Instance.UsedShip2Btn();
+            UICSShopController.Instance.SetUseAllShips();
+            UICSShopController.Instance.SetUsedShip();
         }
     }
 
@@ -259,7 +257,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip3Price());
                 GameManager.Instance.data.setHaveShip3(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseShip3Btn();
+                UICSShopController.Instance.SetUseAllShips();
+                UICSShopController.Instance.SetUsedShip();
             }
             else
             {
@@ -271,9 +270,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite ship = GameObject.Find("Icon_Ship3").GetComponent<Image>().sprite;
             GameManager.Instance.data.setShipSprite(ship.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllShipTxt();
-            UICSShopController.Instance.SetUseAllShipBtn();
-            UICSShopController.Instance.UsedShip3Btn();
+            UICSShopController.Instance.SetUseAllShips();
+            UICSShopController.Instance.SetUsedShip();
         }
     }
 
@@ -289,7 +287,8 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setCurrentCoin(currentCoin -= GameManager.Instance.data.getShip4Price());
                 GameManager.Instance.data.setHaveShip4(true);
                 GameManager.Instance.SaveData();
-                UICSShopController.Instance.UseShip4Btn();
+                UICSShopController.Instance.SetUseAllShips();
+                UICSShopController.Instance.SetUsedShip();
             }
             else
             {
@@ -301,9 +300,8 @@ public class ItemShopButtonController : MonoBehaviour
             Sprite ship = GameObject.Find("Icon_Ship4").GetComponent<Image>().sprite;
             GameManager.Instance.data.setShipSprite(ship.name);
             GameManager.Instance.SaveData();
-            UICSShopController.Instance.SetUseAllShipTxt();
-            UICSShopController.Instance.SetUseAllShipBtn();
-            UICSShopController.Instance.UsedShip4Btn();
+            UICSShopController.Instance.SetUseAllShips();
+            UICSShopController.Instance.SetUsedShip();
         }
     }
 }
