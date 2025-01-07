@@ -7,7 +7,7 @@ using UnityEngine;
 public class Data
 {
     [SerializeField] private float highestDistance;
-    [SerializeField] private int currentCoin = 100;
+    [SerializeField] private int currentCoin = 3000;
     [SerializeField] private int currentRocketItem = 1;
     [SerializeField] private int currentRespawnItem = 1;
     [SerializeField] private int rocketItemPrice = 10;

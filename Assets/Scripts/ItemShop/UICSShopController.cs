@@ -37,42 +37,10 @@ public class UICSShopController : MonoBehaviour
         coinNumberText.text = GameManager.Instance.data.getCurrentCoin().ToString();
 
         // Initialize characters
-        for (int i = 0; i < characterItems.Count; i++)
-        {
-            var item = characterItems[i];
-            if (i == 0) // Default character
-            {
-                UpdateItemStatus(item, "Icon_Char", "Characters", GameManager.Instance.data.getCharSprite());
-            }
-            else
-            {
-                bool hasChar = GetHasCharacter(i);
-                if (hasChar)
-                {
-                    UpdateItemStatus(item, $"Icon_Char{i}", "Characters", GameManager.Instance.data.getCharSprite());
-                }
-                item.priceText.text = GetCharacterPrice(i).ToString();
-            }
-        }
+        SetStatusAllCharacters();
 
         // Initialize ships
-        for (int i = 0; i < shipItems.Count; i++)
-        {
-            var item = shipItems[i];
-            if (i == 0) // Default ship
-            {
-                UpdateItemStatus(item, "Icon_Ship", "Ships", GameManager.Instance.data.getShipSprite());
-            }
-            else
-            {
-                bool hasShip = GetHasShip(i);
-                if (hasShip)
-                {
-                    UpdateItemStatus(item, $"Icon_Ship{i}", "Ships", GameManager.Instance.data.getShipSprite());
-                }
-                item.priceText.text = GetShipPrice(i).ToString();
-            }
-        }
+        SetStatusAllShips();
     }
 
     private void UpdateItemStatus(ShopItem item, string iconName, string resourceFolder, Sprite currentSprite)
@@ -157,12 +125,50 @@ public class UICSShopController : MonoBehaviour
         notification.SetActive(true);
     }
 
-    public void SetUseAllItems(List<ShopItem> items)
+    public void SetStatusAllCharacters()
     {
-        foreach (var item in items)
+        if (GameManager.Instance.data.getCharSprite() != null)
         {
-            item.button.GetComponent<UseBtnStatus>().SetNormalColor();
-            SetItemText(item, "USE");
+            for (int i = 0; i < characterItems.Count; i++)
+            {
+                var item = characterItems[i];
+                if (i == 0) // Default character
+                {
+                    UpdateItemStatus(item, "Icon_Char", "Characters", GameManager.Instance.data.getCharSprite());
+                }
+                else
+                {
+                    bool hasChar = GetHasCharacter(i);
+                    if (hasChar)
+                    {
+                        UpdateItemStatus(item, $"Icon_Char{i}", "Characters", GameManager.Instance.data.getCharSprite());
+                    }
+                    item.priceText.text = GetCharacterPrice(i).ToString();
+                }
+            }
+        }
+    }
+
+    public void SetStatusAllShips()
+    {
+        if (GameManager.Instance.data.getShipSprite() != null){
+            for (int i = 0; i < shipItems.Count; i++)
+            {
+                var item = shipItems[i];
+                if (i == 0) // Default ship
+                {
+                    UpdateItemStatus(item, "Icon_Ship", "Ships", GameManager.Instance.data.getShipSprite());
+                }
+                else
+                {
+                    bool hasShip = GetHasShip(i);
+                    if (hasShip)
+                    {
+                        UpdateItemStatus(item, $"Icon_Ship{i}", "Ships", GameManager.Instance.data.getShipSprite());
+                    }
+                    item.priceText.text = GetShipPrice(i).ToString();
+                }
+            }
         }
     }
 
@@ -181,9 +187,6 @@ public class UICSShopController : MonoBehaviour
     }
 
     // Public methods for external calls
-    public void SetUseAllCharacters() => SetUseAllItems(characterItems);
-    public void SetUseAllShips() => SetUseAllItems(shipItems);
-
     public void SetUsedCharacter() => UpdateUsedItem(characterItems, "Characters", GameManager.Instance.data.getCharSprite());
     public void SetUsedShip() => UpdateUsedItem(shipItems, "Ships", GameManager.Instance.data.getShipSprite());
 }
