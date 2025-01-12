@@ -37,7 +37,6 @@ public class ItemsController : MonoBehaviour
             respawnItem.SetActive( false );
             if(isDead == true )
             {
-                SoundController.Instance.PlayOneShot(SoundController.Instance.gameoverSound);
                 UIController.Instance.GameOver();
             }
         }

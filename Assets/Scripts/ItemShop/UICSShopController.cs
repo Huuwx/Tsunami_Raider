@@ -142,7 +142,28 @@ public class UICSShopController : MonoBehaviour
                     if (hasChar)
                     {
                         UpdateItemStatus(item, $"Icon_Char{i}", "Characters", GameManager.Instance.data.getCharSprite());
+                        item.priceText.text = "OWNED";
                     }
+                    else
+                    {
+                        item.priceText.text = GetCharacterPrice(i).ToString();
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 1; i < characterItems.Count; i++)
+            {
+                var item = characterItems[i];
+                bool hasChar = GetHasCharacter(i);
+                if (hasChar)
+                {
+                    UpdateItemStatus(item, $"Icon_Char{i}", "Characters", GameManager.Instance.data.getCharSprite());
+                    item.priceText.text = "OWNED";
+                }
+                else
+                {
                     item.priceText.text = GetCharacterPrice(i).ToString();
                 }
             }
@@ -151,7 +172,8 @@ public class UICSShopController : MonoBehaviour
 
     public void SetStatusAllShips()
     {
-        if (GameManager.Instance.data.getShipSprite() != null){
+        if (GameManager.Instance.data.getShipSprite() != null)
+        {
             for (int i = 0; i < shipItems.Count; i++)
             {
                 var item = shipItems[i];
@@ -165,8 +187,29 @@ public class UICSShopController : MonoBehaviour
                     if (hasShip)
                     {
                         UpdateItemStatus(item, $"Icon_Ship{i}", "Ships", GameManager.Instance.data.getShipSprite());
+                        item.priceText.text = "OWNED";
                     }
-                    item.priceText.text = GetShipPrice(i).ToString();
+                    else
+                    {
+                        item.priceText.text = GetShipPrice(i).ToString();
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = 1; i < shipItems.Count; i++)
+            {
+                var item = shipItems[i];
+                bool hasShip = GetHasShip(i);
+                if (hasShip)
+                {
+                    UpdateItemStatus(item, $"Icon_Char{i}", "Characters", GameManager.Instance.data.getCharSprite());
+                    item.priceText.text = "OWNED";
+                }
+                else
+                {
+                    item.priceText.text = GetCharacterPrice(i).ToString();
                 }
             }
         }

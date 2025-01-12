@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         if (!gameOver)
         {
             gameOver = true;
+            SoundController.Instance.PlayOneShot(SoundController.Instance.gameoverSound);
             Animator GOanimator = GameObject.Find("GameOver Popup").GetComponent<Animator>();
             GOanimator.SetBool("PopUp", true);
 

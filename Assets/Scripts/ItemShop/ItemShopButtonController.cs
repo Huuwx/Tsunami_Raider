@@ -52,6 +52,7 @@ public class ItemShopButtonController : MonoBehaviour
         GameManager.Instance.data.setCharSprite(character.name);
         GameManager.Instance.SaveData();
         UICSShopController.Instance.SetStatusAllCharacters();
+        UICSShopController.Instance.UpdateTextAfterBuy();
     }
 
     public void BuyChar1()
@@ -67,6 +68,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveChar1(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllCharacters();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -95,6 +97,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveChar2(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllCharacters();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -123,6 +126,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveChar3(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllCharacters();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -151,6 +155,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveChar4(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllCharacters();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -188,6 +193,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveShip1(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllShips();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -216,6 +222,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveShip2(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllShips();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -244,6 +251,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveShip3(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllShips();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
@@ -272,6 +280,7 @@ public class ItemShopButtonController : MonoBehaviour
                 GameManager.Instance.data.setHaveShip4(true);
                 GameManager.Instance.SaveData();
                 UICSShopController.Instance.SetStatusAllShips();
+                UICSShopController.Instance.UpdateTextAfterBuy();
             }
             else
             {
