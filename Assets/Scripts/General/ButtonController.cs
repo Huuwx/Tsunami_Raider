@@ -9,7 +9,9 @@ public class ButtonController : MonoBehaviour
 
     public static ButtonController Instance { get { return instance; } }
 
-    [SerializeField] private PopUpController popUpController;
+    [SerializeField] private PopUpController settingPopUpController;
+    [SerializeField] private PopUpController quitPopUpController;
+    [SerializeField] private PopUpController achievementPopUpController;
 
     private void Awake()
     {
@@ -79,25 +81,42 @@ public class ButtonController : MonoBehaviour
     public void OpenSettingPopUp()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        popUpController.OSettingPopUp();
-        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
-        Sanimator.SetBool("OPopUp", true);
-        VolumeSetting.Instance.LoadSlider();
+        settingPopUpController.OpenPopUp();
+        //Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        //Sanimator.SetBool("OPopUp", true);
+        //VolumeSetting.Instance.LoadSlider();
     }
 
     public void OpenQuitPopUp()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        popUpController.OExitPopUp();
-        Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
-        Sanimator.SetBool("OPopUp", true);
+        quitPopUpController.OpenPopUp();
+        //Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        //Sanimator.SetBool("OPopUp", true);
     }
 
-    public void ClosePopUp()
+    public void CloseSettingPopUp()
     {
         SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
-        Animator animator = GameObject.Find("Popup").GetComponent<Animator>();
-        animator.SetBool("OPopUp", false);
+        settingPopUpController.ClPopUp();
+        //Animator animator = GameObject.Find("Popup").GetComponent<Animator>();
+        //animator.SetBool("OPopUp", false);
+    }
+    
+    public void CloseQuitPopUp()
+    {
+        SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
+        quitPopUpController.ClPopUp();
+        //Animator animator = GameObject.Find("Popup").GetComponent<Animator>();
+        //animator.SetBool("OPopUp", false);
+    }
+    
+    public void CloseAchievementPopUp()
+    {
+        //SoundController.Instance.PlayOneShot(SoundController.Instance.clickSound);
+        achievementPopUpController.ClPopUp();
+        //Animator Sanimator = GameObject.Find("Popup").GetComponent<Animator>();
+        //Sanimator.SetBool("OPopUp", true);
     }
 
     public void OpenAchievementScene()
